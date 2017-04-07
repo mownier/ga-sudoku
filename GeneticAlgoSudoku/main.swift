@@ -8,5 +8,16 @@
 
 import Foundation
 
-print("Hello, World!")
-
+let organism = Organism()
+let population = Population()
+let fitness = Elitism()
+let mutation = RandomMutation()
+let reproduction = Reproduction()
+var algo = GeneticAlgorithm(
+    organism: organism,
+    population: population,
+    fitness: fitness,
+    mutation: mutation,
+    reproduction: reproduction
+)
+algo.solve()

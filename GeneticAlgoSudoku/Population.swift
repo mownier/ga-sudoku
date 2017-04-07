@@ -26,8 +26,7 @@ public struct Population: PopulationProtocol {
                 guard !$0.isGiven else { return $0 }
                 
                 var chromosome = $0
-                let data = Int(arc4random()) % 9
-                chromosome.data = UInt8(data + 1)
+                chromosome.data = (Int(arc4random()) % 9) + 1
                 return chromosome
             })
             organisms.append(newOrganism)

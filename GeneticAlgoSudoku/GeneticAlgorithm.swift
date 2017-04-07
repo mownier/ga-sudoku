@@ -26,7 +26,7 @@ public struct GeneticAlgorithm {
     }
     
     public mutating func solve() {
-        var solutionBestScore: UInt8 = 0
+        var solutionBestScore: Int = 0
         
         generateInitialSolutions()
         
@@ -100,15 +100,15 @@ public protocol PopulationProtocol {
 
 public protocol FitnessProtocol {
 
-    var bestScore: UInt8 { get }
+    var bestScore: Int { get }
     
-    func computeScore(for organism: Organism) -> UInt8
+    func computeScore(for organism: Organism) -> Int
     func performNaturalSelection(from organisms: [Organism]) -> [Organism]
 }
 
 public protocol MutationProtocol {
     
-    var rate: UInt8 { get }
+    var rate: Int { get }
     var isAllowed: Bool { get }
     
     func mutate(_ organism: Organism) -> Organism

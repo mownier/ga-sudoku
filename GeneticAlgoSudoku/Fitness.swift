@@ -10,10 +10,10 @@ import Foundation
 
 public struct Elitism: FitnessProtocol {
 
-    public var bestScore: UInt8 = 100 // 100 %
-    public var survivalRate: UInt8 = 80 // 80 %
+    public var bestScore: Int = 100 // 100 %
+    public var survivalRate: Int = 80 // 80 %
     
-    public func computeScore(for organism: Organism) -> UInt8 {
+    public func computeScore(for organism: Organism) -> Int {
         var score = computeRowScores(for: organism)
         score += computeColumnScores(for: organism)
         score += computeBoxScores(for: organism)
@@ -22,7 +22,7 @@ public struct Elitism: FitnessProtocol {
     }
     
     public func performNaturalSelection(from organisms: [Organism]) -> [Organism] {
-        let numberOfSurvivedOrganisms = Int(organisms.count * (Int(survivalRate) / 100))
+        let numberOfSurvivedOrganisms = organisms.count * (survivalRate / 100)
         return organisms.filter({
             guard let index = organisms.index(of: $0),
                 index < numberOfSurvivedOrganisms else {
@@ -33,15 +33,15 @@ public struct Elitism: FitnessProtocol {
         })
     }
     
-    private func computeRowScores(for organism: Organism) -> UInt8 {
+    private func computeRowScores(for organism: Organism) -> Int {
         return 100
     }
     
-    private func computeColumnScores(for organism: Organism) -> UInt8 {
+    private func computeColumnScores(for organism: Organism) -> Int {
         return 100
     }
     
-    private func computeBoxScores(for organism: Organism) -> UInt8 {
+    private func computeBoxScores(for organism: Organism) -> Int {
         return 100
     }
 }

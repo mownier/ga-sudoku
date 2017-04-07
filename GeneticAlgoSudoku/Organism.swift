@@ -8,16 +8,20 @@
 
 public struct Organism: Equatable {
     
-    public var score: UInt8
+    public var score: Int
     public var chromosomes: [Chromosome]
     
-    public init(score: UInt8, chromosomes: [Chromosome]) {
+    public init(score: Int, chromosomes: [Chromosome]) {
         self.chromosomes = chromosomes
         self.score = score
     }
     
     public init() {
-        self.init(score: 0, chromosomes: [Chromosome]())
+        var chromosomes = [Chromosome]()
+        for _ in 0..<81 {
+            chromosomes.append(Chromosome())
+        }
+        self.init(score: 0, chromosomes: chromosomes)
     }
 }
 

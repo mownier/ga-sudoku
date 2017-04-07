@@ -10,7 +10,7 @@ import Foundation
 
 public struct RandomMutation: MutationProtocol {
 
-    public var rate: UInt8 = 2 // 2 %
+    public var rate: Int = 2 // 2 %
     public var isAllowed: Bool {
         return UInt32(rate) <= arc4random() % 100 + 1
     }
@@ -28,8 +28,7 @@ public struct RandomMutation: MutationProtocol {
             }
             
             var chromosome = $0
-            let data = Int(arc4random()) % 9
-            chromosome.data = UInt8(data + 1)
+            chromosome.data = (Int(arc4random()) % 9) + 1
             return chromosome
         })
         

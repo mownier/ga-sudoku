@@ -8,7 +8,7 @@
 
 public struct Chromosome: Equatable {
     
-    public var data: UInt8
+    public var data: Int
     public var isGiven: Bool
     
     public init() {

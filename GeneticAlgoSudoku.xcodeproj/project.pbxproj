@@ -13,6 +13,7 @@
 		B90B798B1E96293E00B38049 /* GeneticAlgorithm.swift in Sources */ = {isa = PBXBuildFile; fileRef = B90B798A1E96293E00B38049 /* GeneticAlgorithm.swift */; };
 		B97D58361E9769BF001B522F /* Mutation.swift in Sources */ = {isa = PBXBuildFile; fileRef = B97D58351E9769BF001B522F /* Mutation.swift */; };
 		B97D58381E977061001B522F /* Fitness.swift in Sources */ = {isa = PBXBuildFile; fileRef = B97D58371E977061001B522F /* Fitness.swift */; };
+		B97D583A1E9779B9001B522F /* Population.swift in Sources */ = {isa = PBXBuildFile; fileRef = B97D58391E9779B9001B522F /* Population.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -35,6 +36,7 @@
 		B90B798A1E96293E00B38049 /* GeneticAlgorithm.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeneticAlgorithm.swift; sourceTree = "<group>"; };
 		B97D58351E9769BF001B522F /* Mutation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Mutation.swift; sourceTree = "<group>"; };
 		B97D58371E977061001B522F /* Fitness.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Fitness.swift; sourceTree = "<group>"; };
+		B97D58391E9779B9001B522F /* Population.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Population.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,14 +69,31 @@
 		B90B797E1E960F5800B38049 /* GeneticAlgoSudoku */ = {
 			isa = PBXGroup;
 			children = (
-				B90B797F1E960F5800B38049 /* main.swift */,
-				B90B79861E96187600B38049 /* Chromosome.swift */,
-				B90B79881E96204A00B38049 /* Organism.swift */,
-				B90B798A1E96293E00B38049 /* GeneticAlgorithm.swift */,
-				B97D58351E9769BF001B522F /* Mutation.swift */,
-				B97D58371E977061001B522F /* Fitness.swift */,
+				B97D583B1E9779C5001B522F /* Main */,
+				B97D583C1E9779D0001B522F /* Source */,
 			);
 			path = GeneticAlgoSudoku;
+			sourceTree = "<group>";
+		};
+		B97D583B1E9779C5001B522F /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				B90B797F1E960F5800B38049 /* main.swift */,
+			);
+			name = Main;
+			sourceTree = "<group>";
+		};
+		B97D583C1E9779D0001B522F /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				B90B79861E96187600B38049 /* Chromosome.swift */,
+				B97D58371E977061001B522F /* Fitness.swift */,
+				B90B798A1E96293E00B38049 /* GeneticAlgorithm.swift */,
+				B97D58351E9769BF001B522F /* Mutation.swift */,
+				B90B79881E96204A00B38049 /* Organism.swift */,
+				B97D58391E9779B9001B522F /* Population.swift */,
+			);
+			name = Source;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -139,6 +158,7 @@
 				B97D58381E977061001B522F /* Fitness.swift in Sources */,
 				B90B79801E960F5800B38049 /* main.swift in Sources */,
 				B90B79871E96187600B38049 /* Chromosome.swift in Sources */,
+				B97D583A1E9779B9001B522F /* Population.swift in Sources */,
 				B90B798B1E96293E00B38049 /* GeneticAlgorithm.swift in Sources */,
 				B90B79891E96204A00B38049 /* Organism.swift in Sources */,
 				B97D58361E9769BF001B522F /* Mutation.swift in Sources */,

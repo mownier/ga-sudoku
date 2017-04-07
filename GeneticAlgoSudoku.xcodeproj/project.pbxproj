@@ -8,6 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		B90B79801E960F5800B38049 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = B90B797F1E960F5800B38049 /* main.swift */; };
+		B90B79871E96187600B38049 /* Chromosome.swift in Sources */ = {isa = PBXBuildFile; fileRef = B90B79861E96187600B38049 /* Chromosome.swift */; };
+		B90B79891E96204A00B38049 /* Organism.swift in Sources */ = {isa = PBXBuildFile; fileRef = B90B79881E96204A00B38049 /* Organism.swift */; };
+		B90B798B1E96293E00B38049 /* GeneticAlgorithm.swift in Sources */ = {isa = PBXBuildFile; fileRef = B90B798A1E96293E00B38049 /* GeneticAlgorithm.swift */; };
+		B97D58361E9769BF001B522F /* Mutation.swift in Sources */ = {isa = PBXBuildFile; fileRef = B97D58351E9769BF001B522F /* Mutation.swift */; };
+		B97D58381E977061001B522F /* Fitness.swift in Sources */ = {isa = PBXBuildFile; fileRef = B97D58371E977061001B522F /* Fitness.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -25,6 +30,11 @@
 /* Begin PBXFileReference section */
 		B90B797C1E960F5800B38049 /* GeneticAlgoSudoku */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = GeneticAlgoSudoku; sourceTree = BUILT_PRODUCTS_DIR; };
 		B90B797F1E960F5800B38049 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
+		B90B79861E96187600B38049 /* Chromosome.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Chromosome.swift; sourceTree = "<group>"; };
+		B90B79881E96204A00B38049 /* Organism.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Organism.swift; sourceTree = "<group>"; };
+		B90B798A1E96293E00B38049 /* GeneticAlgorithm.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeneticAlgorithm.swift; sourceTree = "<group>"; };
+		B97D58351E9769BF001B522F /* Mutation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Mutation.swift; sourceTree = "<group>"; };
+		B97D58371E977061001B522F /* Fitness.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Fitness.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +68,11 @@
 			isa = PBXGroup;
 			children = (
 				B90B797F1E960F5800B38049 /* main.swift */,
+				B90B79861E96187600B38049 /* Chromosome.swift */,
+				B90B79881E96204A00B38049 /* Organism.swift */,
+				B90B798A1E96293E00B38049 /* GeneticAlgorithm.swift */,
+				B97D58351E9769BF001B522F /* Mutation.swift */,
+				B97D58371E977061001B522F /* Fitness.swift */,
 			);
 			path = GeneticAlgoSudoku;
 			sourceTree = "<group>";
@@ -121,7 +136,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B97D58381E977061001B522F /* Fitness.swift in Sources */,
 				B90B79801E960F5800B38049 /* main.swift in Sources */,
+				B90B79871E96187600B38049 /* Chromosome.swift in Sources */,
+				B90B798B1E96293E00B38049 /* GeneticAlgorithm.swift in Sources */,
+				B90B79891E96204A00B38049 /* Organism.swift in Sources */,
+				B97D58361E9769BF001B522F /* Mutation.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -253,6 +273,7 @@
 				B90B79851E960F5800B38049 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

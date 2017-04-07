@@ -14,6 +14,7 @@
 		B97D58361E9769BF001B522F /* Mutation.swift in Sources */ = {isa = PBXBuildFile; fileRef = B97D58351E9769BF001B522F /* Mutation.swift */; };
 		B97D58381E977061001B522F /* Fitness.swift in Sources */ = {isa = PBXBuildFile; fileRef = B97D58371E977061001B522F /* Fitness.swift */; };
 		B97D583A1E9779B9001B522F /* Population.swift in Sources */ = {isa = PBXBuildFile; fileRef = B97D58391E9779B9001B522F /* Population.swift */; };
+		B97D583E1E977D01001B522F /* Reproduction.swift in Sources */ = {isa = PBXBuildFile; fileRef = B97D583D1E977D01001B522F /* Reproduction.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -37,6 +38,7 @@
 		B97D58351E9769BF001B522F /* Mutation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Mutation.swift; sourceTree = "<group>"; };
 		B97D58371E977061001B522F /* Fitness.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Fitness.swift; sourceTree = "<group>"; };
 		B97D58391E9779B9001B522F /* Population.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Population.swift; sourceTree = "<group>"; };
+		B97D583D1E977D01001B522F /* Reproduction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reproduction.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -92,6 +94,7 @@
 				B97D58351E9769BF001B522F /* Mutation.swift */,
 				B90B79881E96204A00B38049 /* Organism.swift */,
 				B97D58391E9779B9001B522F /* Population.swift */,
+				B97D583D1E977D01001B522F /* Reproduction.swift */,
 			);
 			name = Source;
 			sourceTree = "<group>";
@@ -158,6 +161,7 @@
 				B97D58381E977061001B522F /* Fitness.swift in Sources */,
 				B90B79801E960F5800B38049 /* main.swift in Sources */,
 				B90B79871E96187600B38049 /* Chromosome.swift in Sources */,
+				B97D583E1E977D01001B522F /* Reproduction.swift in Sources */,
 				B97D583A1E9779B9001B522F /* Population.swift in Sources */,
 				B90B798B1E96293E00B38049 /* GeneticAlgorithm.swift in Sources */,
 				B90B79891E96204A00B38049 /* Organism.swift in Sources */,

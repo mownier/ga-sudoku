@@ -68,7 +68,7 @@ public struct GeneticAlgorithm {
         
         print("---- Solution not found")
         print("---- Best score:", solutionBestScore)
-        print(solutions)
+        print(solutions.filter({ $0.score == solutionBestScore }))
         print("===============================================")
     }
     

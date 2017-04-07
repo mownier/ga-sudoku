@@ -74,7 +74,7 @@ public struct GeneticAlgorithm {
     
     private mutating func generateInitialSolutions() {
         solutions.removeAll()
-        solutions.append(contentsOf: population.initialOrganisms)
+        solutions.append(contentsOf: population.generateInitialOrganisms(from: organism))
     }
     
     private mutating func sortSolutions() {
@@ -94,7 +94,8 @@ public protocol PopulationProtocol {
     
     var numberOfOrganisms: Int { get }
     var numberOfGenerations: Int { get }
-    var initialOrganisms: [Organism] { get }
+    
+    func generateInitialOrganisms(from organism: Organism) -> [Organism]
 }
 
 public protocol FitnessProtocol {

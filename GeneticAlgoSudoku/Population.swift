@@ -13,9 +13,9 @@ public struct Population: PopulationProtocol {
     public var numberOfOrganisms: Int
     public var numberOfGenerations: Int
     
-    public init() {
-        numberOfOrganisms = 10
-        numberOfGenerations = 100
+    public init(organismCount: Int = 10, generationCount: Int = 100) {
+        numberOfOrganisms = organismCount
+        numberOfGenerations = generationCount
     }
     
     public func generateInitialOrganisms(from organism: Organism) -> [Organism] {

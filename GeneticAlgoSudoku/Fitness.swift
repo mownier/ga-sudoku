@@ -54,7 +54,6 @@ public struct Elitism: FitnessProtocol {
         let sumPercentage = (sum / overallSum) * 100
         let rowScore = (productPercentage + sumPercentage) / 2
         
-        print("rowScore:", rowScore)
         return rowScore
     }
     
@@ -90,7 +89,6 @@ public struct Elitism: FitnessProtocol {
         let sumPercentage = (sum / overallSum) * 100
         let columnScore = (productPercentage + sumPercentage) / 2
         
-        print("columnScore:", columnScore)
         return columnScore
     }
     
@@ -136,7 +134,6 @@ public struct Elitism: FitnessProtocol {
         let sumPercentage = (sum / overallSum) * 100
         let boxScore = (productPercentage + sumPercentage) / 2
         
-        print("boxScore:", boxScore)
         return boxScore
     }
 }

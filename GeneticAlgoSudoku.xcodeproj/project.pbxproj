@@ -7,6 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B902F6F31E98CDF900B91457 /* ElitismTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B902F6F21E98CDF900B91457 /* ElitismTest.swift */; };
+		B902F6F41E98CE1B00B91457 /* Chromosome.swift in Sources */ = {isa = PBXBuildFile; fileRef = B90B79861E96187600B38049 /* Chromosome.swift */; };
+		B902F6F51E98CE2300B91457 /* Fitness.swift in Sources */ = {isa = PBXBuildFile; fileRef = B97D58371E977061001B522F /* Fitness.swift */; };
+		B902F6F61E98CE2300B91457 /* GeneticAlgorithm.swift in Sources */ = {isa = PBXBuildFile; fileRef = B90B798A1E96293E00B38049 /* GeneticAlgorithm.swift */; };
+		B902F6F71E98CE2300B91457 /* Mutation.swift in Sources */ = {isa = PBXBuildFile; fileRef = B97D58351E9769BF001B522F /* Mutation.swift */; };
+		B902F6F81E98CE2300B91457 /* Organism.swift in Sources */ = {isa = PBXBuildFile; fileRef = B90B79881E96204A00B38049 /* Organism.swift */; };
+		B902F6F91E98CE2300B91457 /* Population.swift in Sources */ = {isa = PBXBuildFile; fileRef = B97D58391E9779B9001B522F /* Population.swift */; };
+		B902F6FA1E98CE2300B91457 /* Reproduction.swift in Sources */ = {isa = PBXBuildFile; fileRef = B97D583D1E977D01001B522F /* Reproduction.swift */; };
 		B90B79801E960F5800B38049 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = B90B797F1E960F5800B38049 /* main.swift */; };
 		B90B79871E96187600B38049 /* Chromosome.swift in Sources */ = {isa = PBXBuildFile; fileRef = B90B79861E96187600B38049 /* Chromosome.swift */; };
 		B90B79891E96204A00B38049 /* Organism.swift in Sources */ = {isa = PBXBuildFile; fileRef = B90B79881E96204A00B38049 /* Organism.swift */; };
@@ -30,6 +38,9 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		B902F6EA1E98CDC300B91457 /* GeneticAlgoSudokuTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GeneticAlgoSudokuTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		B902F6EE1E98CDC400B91457 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B902F6F21E98CDF900B91457 /* ElitismTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ElitismTest.swift; sourceTree = "<group>"; };
 		B90B797C1E960F5800B38049 /* GeneticAlgoSudoku */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = GeneticAlgoSudoku; sourceTree = BUILT_PRODUCTS_DIR; };
 		B90B797F1E960F5800B38049 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		B90B79861E96187600B38049 /* Chromosome.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Chromosome.swift; sourceTree = "<group>"; };
@@ -42,6 +53,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		B902F6E71E98CDC300B91457 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		B90B79791E960F5800B38049 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -52,10 +70,20 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B902F6EB1E98CDC400B91457 /* GeneticAlgoSudokuTests */ = {
+			isa = PBXGroup;
+			children = (
+				B902F6EE1E98CDC400B91457 /* Info.plist */,
+				B902F6F21E98CDF900B91457 /* ElitismTest.swift */,
+			);
+			path = GeneticAlgoSudokuTests;
+			sourceTree = "<group>";
+		};
 		B90B79731E960F5800B38049 = {
 			isa = PBXGroup;
 			children = (
 				B90B797E1E960F5800B38049 /* GeneticAlgoSudoku */,
+				B902F6EB1E98CDC400B91457 /* GeneticAlgoSudokuTests */,
 				B90B797D1E960F5800B38049 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -64,6 +92,7 @@
 			isa = PBXGroup;
 			children = (
 				B90B797C1E960F5800B38049 /* GeneticAlgoSudoku */,
+				B902F6EA1E98CDC300B91457 /* GeneticAlgoSudokuTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -102,6 +131,23 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		B902F6E91E98CDC300B91457 /* GeneticAlgoSudokuTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B902F6EF1E98CDC400B91457 /* Build configuration list for PBXNativeTarget "GeneticAlgoSudokuTests" */;
+			buildPhases = (
+				B902F6E61E98CDC300B91457 /* Sources */,
+				B902F6E71E98CDC300B91457 /* Frameworks */,
+				B902F6E81E98CDC300B91457 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = GeneticAlgoSudokuTests;
+			productName = GeneticAlgoSudokuTests;
+			productReference = B902F6EA1E98CDC300B91457 /* GeneticAlgoSudokuTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		B90B797B1E960F5800B38049 /* GeneticAlgoSudoku */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = B90B79831E960F5800B38049 /* Build configuration list for PBXNativeTarget "GeneticAlgoSudoku" */;
@@ -129,6 +175,12 @@
 				LastUpgradeCheck = 0800;
 				ORGANIZATIONNAME = Ner;
 				TargetAttributes = {
+					B902F6E91E98CDC300B91457 = {
+						CreatedOnToolsVersion = 8.0;
+						DevelopmentTeam = 4WBRGV5Z9M;
+						LastSwiftMigration = 0800;
+						ProvisioningStyle = Automatic;
+					};
 					B90B797B1E960F5800B38049 = {
 						CreatedOnToolsVersion = 8.0;
 						DevelopmentTeam = 4WBRGV5Z9M;
@@ -149,11 +201,37 @@
 			projectRoot = "";
 			targets = (
 				B90B797B1E960F5800B38049 /* GeneticAlgoSudoku */,
+				B902F6E91E98CDC300B91457 /* GeneticAlgoSudokuTests */,
 			);
 		};
 /* End PBXProject section */
 
+/* Begin PBXResourcesBuildPhase section */
+		B902F6E81E98CDC300B91457 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
+		B902F6E61E98CDC300B91457 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B902F6F51E98CE2300B91457 /* Fitness.swift in Sources */,
+				B902F6F81E98CE2300B91457 /* Organism.swift in Sources */,
+				B902F6F31E98CDF900B91457 /* ElitismTest.swift in Sources */,
+				B902F6FA1E98CE2300B91457 /* Reproduction.swift in Sources */,
+				B902F6F91E98CE2300B91457 /* Population.swift in Sources */,
+				B902F6F41E98CE1B00B91457 /* Chromosome.swift in Sources */,
+				B902F6F61E98CE2300B91457 /* GeneticAlgorithm.swift in Sources */,
+				B902F6F71E98CE2300B91457 /* Mutation.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		B90B79781E960F5800B38049 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -172,6 +250,37 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
+		B902F6F01E98CDC400B91457 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = 4WBRGV5Z9M;
+				INFOPLIST_FILE = GeneticAlgoSudokuTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.ner.GeneticAlgoSudokuTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		B902F6F11E98CDC400B91457 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = 4WBRGV5Z9M;
+				INFOPLIST_FILE = GeneticAlgoSudokuTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.ner.GeneticAlgoSudokuTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
 		B90B79811E960F5800B38049 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -281,6 +390,14 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		B902F6EF1E98CDC400B91457 /* Build configuration list for PBXNativeTarget "GeneticAlgoSudokuTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B902F6F01E98CDC400B91457 /* Debug */,
+				B902F6F11E98CDC400B91457 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
 		B90B79771E960F5800B38049 /* Build configuration list for PBXProject "GeneticAlgoSudoku" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

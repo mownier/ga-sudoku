@@ -11,9 +11,9 @@ public struct Chromosome: Equatable {
     public var data: Int
     public var isGiven: Bool
     
-    public init() {
-        isGiven = false
-        data = 0
+    public init(data: Int = 0, isGiven: Bool = false) {
+        self.data = data
+        self.isGiven = isGiven
     }
 }
 

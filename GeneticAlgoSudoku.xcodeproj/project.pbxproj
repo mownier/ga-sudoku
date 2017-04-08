@@ -15,6 +15,7 @@
 		B902F6F81E98CE2300B91457 /* Organism.swift in Sources */ = {isa = PBXBuildFile; fileRef = B90B79881E96204A00B38049 /* Organism.swift */; };
 		B902F6F91E98CE2300B91457 /* Population.swift in Sources */ = {isa = PBXBuildFile; fileRef = B97D58391E9779B9001B522F /* Population.swift */; };
 		B902F6FA1E98CE2300B91457 /* Reproduction.swift in Sources */ = {isa = PBXBuildFile; fileRef = B97D583D1E977D01001B522F /* Reproduction.swift */; };
+		B902F6FC1E98D0F600B91457 /* TestHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B902F6FB1E98D0F600B91457 /* TestHelper.swift */; };
 		B90B79801E960F5800B38049 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = B90B797F1E960F5800B38049 /* main.swift */; };
 		B90B79871E96187600B38049 /* Chromosome.swift in Sources */ = {isa = PBXBuildFile; fileRef = B90B79861E96187600B38049 /* Chromosome.swift */; };
 		B90B79891E96204A00B38049 /* Organism.swift in Sources */ = {isa = PBXBuildFile; fileRef = B90B79881E96204A00B38049 /* Organism.swift */; };
@@ -41,6 +42,7 @@
 		B902F6EA1E98CDC300B91457 /* GeneticAlgoSudokuTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GeneticAlgoSudokuTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B902F6EE1E98CDC400B91457 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B902F6F21E98CDF900B91457 /* ElitismTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ElitismTest.swift; sourceTree = "<group>"; };
+		B902F6FB1E98D0F600B91457 /* TestHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestHelper.swift; sourceTree = "<group>"; };
 		B90B797C1E960F5800B38049 /* GeneticAlgoSudoku */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = GeneticAlgoSudoku; sourceTree = BUILT_PRODUCTS_DIR; };
 		B90B797F1E960F5800B38049 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		B90B79861E96187600B38049 /* Chromosome.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Chromosome.swift; sourceTree = "<group>"; };
@@ -75,6 +77,7 @@
 			children = (
 				B902F6EE1E98CDC400B91457 /* Info.plist */,
 				B902F6F21E98CDF900B91457 /* ElitismTest.swift */,
+				B902F6FB1E98D0F600B91457 /* TestHelper.swift */,
 			);
 			path = GeneticAlgoSudokuTests;
 			sourceTree = "<group>";
@@ -227,6 +230,7 @@
 				B902F6FA1E98CE2300B91457 /* Reproduction.swift in Sources */,
 				B902F6F91E98CE2300B91457 /* Population.swift in Sources */,
 				B902F6F41E98CE1B00B91457 /* Chromosome.swift in Sources */,
+				B902F6FC1E98D0F600B91457 /* TestHelper.swift in Sources */,
 				B902F6F61E98CE2300B91457 /* GeneticAlgorithm.swift in Sources */,
 				B902F6F71E98CE2300B91457 /* Mutation.swift in Sources */,
 			);

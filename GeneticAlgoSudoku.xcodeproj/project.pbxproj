@@ -24,6 +24,7 @@
 		B97D58381E977061001B522F /* Fitness.swift in Sources */ = {isa = PBXBuildFile; fileRef = B97D58371E977061001B522F /* Fitness.swift */; };
 		B97D583A1E9779B9001B522F /* Population.swift in Sources */ = {isa = PBXBuildFile; fileRef = B97D58391E9779B9001B522F /* Population.swift */; };
 		B97D583E1E977D01001B522F /* Reproduction.swift in Sources */ = {isa = PBXBuildFile; fileRef = B97D583D1E977D01001B522F /* Reproduction.swift */; };
+		B9C498C01E9B507600144E12 /* Output.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9C498BF1E9B507600144E12 /* Output.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -52,6 +53,7 @@
 		B97D58371E977061001B522F /* Fitness.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Fitness.swift; sourceTree = "<group>"; };
 		B97D58391E9779B9001B522F /* Population.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Population.swift; sourceTree = "<group>"; };
 		B97D583D1E977D01001B522F /* Reproduction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reproduction.swift; sourceTree = "<group>"; };
+		B9C498BF1E9B507600144E12 /* Output.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Output.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -125,6 +127,7 @@
 				B90B798A1E96293E00B38049 /* GeneticAlgorithm.swift */,
 				B97D58351E9769BF001B522F /* Mutation.swift */,
 				B90B79881E96204A00B38049 /* Organism.swift */,
+				B9C498BF1E9B507600144E12 /* Output.swift */,
 				B97D58391E9779B9001B522F /* Population.swift */,
 				B97D583D1E977D01001B522F /* Reproduction.swift */,
 			);
@@ -244,6 +247,7 @@
 				B90B79801E960F5800B38049 /* main.swift in Sources */,
 				B90B79871E96187600B38049 /* Chromosome.swift in Sources */,
 				B97D583E1E977D01001B522F /* Reproduction.swift in Sources */,
+				B9C498C01E9B507600144E12 /* Output.swift in Sources */,
 				B97D583A1E9779B9001B522F /* Population.swift in Sources */,
 				B90B798B1E96293E00B38049 /* GeneticAlgorithm.swift in Sources */,
 				B90B79891E96204A00B38049 /* Organism.swift in Sources */,
@@ -401,6 +405,7 @@
 				B902F6F11E98CDC400B91457 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		B90B79771E960F5800B38049 /* Build configuration list for PBXProject "GeneticAlgoSudoku" */ = {
 			isa = XCConfigurationList;

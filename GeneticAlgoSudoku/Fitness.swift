@@ -11,162 +11,72 @@ import Foundation
 public struct Elitism: FitnessProtocol {
 
     public var bestScore: Int = 100 // 100 %
-    public var survivalRate: Int = 80 // 80 %
+    public var survivalRate: Int
+    
+    public init(survivalRate: Int = 80) {
+        self.survivalRate = survivalRate
+    }
     
     public func computeScore(for organism: Organism) -> Int {
-        var score = computeRowScores(for: organism)
-        score += computeColumnScores(for: organism)
-        score += computeBoxScores(for: organism)
-        score /= 3
-        return score
+        let board = Board(chromosomes: organism.chromosomes)
+        
+        let overallSum: Int = 45 * 9 * 3
+        let overallProduct: Int = 362880 * 9 * 3
+        let overallNonDuplicate: Int = 81 * 3 * 3
+        
+        var product: Int = 0
+        var sum: Int = 0
+        var nonDuplicateCount: Int = 0
+        var multiplier: Int = 1
+        
+        board.rows.flatMap({ $0 }).enumerated().forEach({
+            score(board, $0, $1, &product, &sum, &multiplier, &nonDuplicateCount)
+        })
+        
+        board.columns.flatMap({ $0 }).enumerated().forEach({
+            score(board, $0, $1, &product, &sum, &multiplier, &nonDuplicateCount)
+        })
+        
+        board.boxes.flatMap({ $0 }).enumerated().forEach({
+            score(board, $0, $1, &product, &sum, &multiplier, &nonDuplicateCount)
+        })
+        
+        let sumPercentage = Int((Double(sum) / Double(overallSum)) * 100)
+        let productPercentage = Int((Double(product) / Double(overallProduct)) * 100)
+        let nonDuplicatePercentage = Int((Double(nonDuplicateCount) / Double(overallNonDuplicate)) * 100)
+        var averagePercentage = (sumPercentage + productPercentage + nonDuplicatePercentage) / 3
+        averagePercentage = averagePercentage > 100 ? 0 : averagePercentage
+        return nonDuplicatePercentage
     }
     
     public func performNaturalSelection(from organisms: [Organism]) -> [Organism] {
         let numberOfSurvivedOrganisms = organisms.count * (survivalRate / 100)
-        return organisms.filter({
-            guard let index = organisms.index(of: $0),
-                index < numberOfSurvivedOrganisms else {
-                return false
-            }
-            
-            return true
-        })
+        var sorted = organisms.sorted(by: { $0.score > $1.score })
+        sorted.removeSubrange(numberOfSurvivedOrganisms..<organisms.count)
+        return sorted
     }
     
-    private func computeRowScores(for organism: Organism) -> Int {
-        let overallProduct: Int = 3265920
-        let overallSum: Int = 405
-        let overallNonDuplicate: Int = 81
+    private func score(_ board: Board, _ index: Int, _ chromosome: Chromosome, _ product: inout Int, _ sum: inout Int, _ multiplier: inout Int, _ nonDuplicateCount: inout Int) {
+        sum += chromosome.data
         
-        var product: Int = 0
-        var sum: Int = 0
-        var multiplier: Int = 1
-        var nonDuplicateCount: Int = 0
-        var nonDuplicates = [Int]()
+        multiplier *= chromosome.data
         
-        for (index, chromosome) in organism.chromosomes.enumerated() {
-            multiplier *= chromosome.data
-            sum += chromosome.data
+        if index != 0 && index % 9 == 0 {
             product += multiplier
-            
-            if index % 9 == 0 {
-                multiplier = 1
-                nonDuplicates.removeAll()
-            }
-            
-            if !nonDuplicates.contains(chromosome.data) {
-                nonDuplicateCount += 1
-                nonDuplicates.append(chromosome.data)
-            }
+            multiplier = 1
         }
         
-        let productPercentage = (product / overallProduct) * 100
-        let sumPercentage = (sum / overallSum) * 100
-        let nonDuplicatePercentage = (nonDuplicateCount / overallNonDuplicate) * 100
-        let rowScore = (productPercentage + sumPercentage + nonDuplicatePercentage) / 3
+        let row = board.rows[board.row(for: index)]
+        let col = board.columns[board.column(for: index)]
+        let box = board.boxes[board.box(for: index)]
         
-        return rowScore
-    }
-    
-    private func computeColumnScores(for organism: Organism) -> Int {
-        let overallProduct: Int = 3265920
-        let overallSum: Int = 405
-        let overallNonDuplicate: Int = 81
+        let data = chromosome.data
+        nonDuplicateCount += row.filter({ $0.data == data }).count > 1 ? 0 : 1
+        nonDuplicateCount += col.filter({ $0.data == data }).count > 1 ? 0 : 1
+        nonDuplicateCount += box.filter({ $0.data == data }).count > 1 ? 0 : 1
         
-        var product: Int = 0
-        var sum: Int = 0
-        var multiplier: Int = 1
-        var nonDuplicateCount: Int = 0
-        var nonDuplicates = [Int]()
-        
-        var columnIndex: Int = 0
-        var rowIndex: Int = 0
-        
-        while columnIndex < 9 {
-            let chromsomeIndex = rowIndex * 9 + columnIndex
-            let chromosome = organism.chromosomes[chromsomeIndex]
-            
-            multiplier *= chromosome.data
-            sum += chromosome.data
-            product += multiplier
-            
-            if !nonDuplicates.contains(chromosome.data) {
-                nonDuplicateCount += 1
-                nonDuplicates.append(chromosome.data)
-            }
-            
-            if rowIndex < 8 {
-                rowIndex += 1
-                
-            } else {
-                multiplier = 1
-                columnIndex += 1
-                rowIndex = 0
-                nonDuplicates.removeAll()
-            }
+        if index == 80 {
+            multiplier = 1
         }
-        
-        let productPercentage = (product / overallProduct) * 100
-        let sumPercentage = (sum / overallSum) * 100
-        let nonDuplicatePercentage = (nonDuplicateCount / overallNonDuplicate) * 100
-        let columnScore = (productPercentage + sumPercentage + nonDuplicatePercentage) / 3
-        
-        return columnScore
-    }
-    
-    private func computeBoxScores(for organism: Organism) -> Int {
-        let overallProduct: Int = 3265920
-        let overallSum: Int = 405
-        let overallNonDuplicate: Int = 81
-        
-        var product: Int = 0
-        var sum: Int = 0
-        var multiplier: Int = 1
-        var nonDuplicateCount: Int = 0
-        var nonDuplicates = [Int]()
-        
-        var columnIndex: Int = 0
-        var rowIndex: Int = 0
-        var boxIndex: Int = 0
-        
-        while boxIndex < 9 {
-            let chromosomeIndex = rowIndex * 9 + columnIndex
-            let chromosome = organism.chromosomes[chromosomeIndex]
-            
-            multiplier *= chromosome.data
-            sum += chromosome.data
-            product += multiplier
-            
-            if !nonDuplicates.contains(chromosome.data) {
-                nonDuplicateCount += 1
-                nonDuplicates.append(chromosome.data)
-            }
-            
-            if rowIndex < (boxIndex / 3) * 3 + 2 {
-                rowIndex += 1
-                
-            } else {
-                columnIndex += 1
-                
-                if columnIndex % 3 == 0 {
-                    boxIndex += 1
-                    multiplier = 1
-                    nonDuplicates.removeAll()
-                }
-                
-                if columnIndex % 9 == 0 {
-                    columnIndex = 0
-                }
-                
-                rowIndex = (boxIndex / 3) * 3
-            }
-        }
-        
-        let productPercentage = (product / overallProduct) * 100
-        let sumPercentage = (sum / overallSum) * 100
-        let nonDuplicatePercentage = (nonDuplicateCount / overallNonDuplicate) * 100
-        let boxScore = (productPercentage + sumPercentage + nonDuplicatePercentage) / 3
-        
-        return boxScore
     }
 }

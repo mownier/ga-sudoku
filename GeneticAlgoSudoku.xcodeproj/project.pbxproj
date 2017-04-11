@@ -24,7 +24,10 @@
 		B97D58381E977061001B522F /* Fitness.swift in Sources */ = {isa = PBXBuildFile; fileRef = B97D58371E977061001B522F /* Fitness.swift */; };
 		B97D583A1E9779B9001B522F /* Population.swift in Sources */ = {isa = PBXBuildFile; fileRef = B97D58391E9779B9001B522F /* Population.swift */; };
 		B97D583E1E977D01001B522F /* Reproduction.swift in Sources */ = {isa = PBXBuildFile; fileRef = B97D583D1E977D01001B522F /* Reproduction.swift */; };
+		B9845BD71E9C821B0049C6E7 /* Board.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9845BD61E9C821B0049C6E7 /* Board.swift */; };
+		B9845BD81E9C82240049C6E7 /* Board.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9845BD61E9C821B0049C6E7 /* Board.swift */; };
 		B9C498C01E9B507600144E12 /* Output.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9C498BF1E9B507600144E12 /* Output.swift */; };
+		B9C498C21E9B785E00144E12 /* BoardTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9C498C11E9B785E00144E12 /* BoardTest.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -53,7 +56,9 @@
 		B97D58371E977061001B522F /* Fitness.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Fitness.swift; sourceTree = "<group>"; };
 		B97D58391E9779B9001B522F /* Population.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Population.swift; sourceTree = "<group>"; };
 		B97D583D1E977D01001B522F /* Reproduction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reproduction.swift; sourceTree = "<group>"; };
+		B9845BD61E9C821B0049C6E7 /* Board.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Board.swift; sourceTree = "<group>"; };
 		B9C498BF1E9B507600144E12 /* Output.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Output.swift; sourceTree = "<group>"; };
+		B9C498C11E9B785E00144E12 /* BoardTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BoardTest.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,6 +83,7 @@
 			isa = PBXGroup;
 			children = (
 				B902F6EE1E98CDC400B91457 /* Info.plist */,
+				B9C498C11E9B785E00144E12 /* BoardTest.swift */,
 				B902F6F21E98CDF900B91457 /* ElitismTest.swift */,
 				B902F6FB1E98D0F600B91457 /* TestHelper.swift */,
 			);
@@ -130,6 +136,7 @@
 				B9C498BF1E9B507600144E12 /* Output.swift */,
 				B97D58391E9779B9001B522F /* Population.swift */,
 				B97D583D1E977D01001B522F /* Reproduction.swift */,
+				B9845BD61E9C821B0049C6E7 /* Board.swift */,
 			);
 			name = Source;
 			sourceTree = "<group>";
@@ -229,7 +236,9 @@
 			files = (
 				B902F6F51E98CE2300B91457 /* Fitness.swift in Sources */,
 				B902F6F81E98CE2300B91457 /* Organism.swift in Sources */,
+				B9C498C21E9B785E00144E12 /* BoardTest.swift in Sources */,
 				B902F6F31E98CDF900B91457 /* ElitismTest.swift in Sources */,
+				B9845BD81E9C82240049C6E7 /* Board.swift in Sources */,
 				B902F6FA1E98CE2300B91457 /* Reproduction.swift in Sources */,
 				B902F6F91E98CE2300B91457 /* Population.swift in Sources */,
 				B902F6F41E98CE1B00B91457 /* Chromosome.swift in Sources */,
@@ -245,6 +254,7 @@
 			files = (
 				B97D58381E977061001B522F /* Fitness.swift in Sources */,
 				B90B79801E960F5800B38049 /* main.swift in Sources */,
+				B9845BD71E9C821B0049C6E7 /* Board.swift in Sources */,
 				B90B79871E96187600B38049 /* Chromosome.swift in Sources */,
 				B97D583E1E977D01001B522F /* Reproduction.swift in Sources */,
 				B9C498C01E9B507600144E12 /* Output.swift in Sources */,

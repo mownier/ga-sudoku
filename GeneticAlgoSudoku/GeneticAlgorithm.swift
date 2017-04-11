@@ -13,6 +13,7 @@ public struct GeneticAlgorithm {
     public let mutation: MutationProtocol
     public let population: PopulationProtocol
     public let reproduction: ReproductionProtocol
+    public var output: GeneticAlgorithmOutputProtocol?
     
     private var solutions: [Organism]
     
@@ -26,50 +27,49 @@ public struct GeneticAlgorithm {
     }
     
     public mutating func solve() {
-        var solutionBestScore: Int = 0
-        
         generateInitialSolutions()
+        computeSolutionScores()
+        sortSolutions()
         
-        print("===============================================")
         for i in 0..<population.numberOfGenerations {
-            print("Generation", i + 1)
-            
-            print("---- Computing solution scores")
-            computeSolutionScores()
-            
-            print("---- Sorting solutions")
-            sortSolutions()
-            
-            let generationBestScore = solutions[0].score
-            solutionBestScore = generationBestScore > solutionBestScore ? generationBestScore : solutionBestScore
-            
-            if solutionBestScore == fitness.bestScore {
-                print("---- Solution found")
-                let bestSolutions = solutions.filter({ $0.score == fitness.bestScore })
-                print(bestSolutions)
-                print("===============================================")
-                return
-            }
-            
-            print("---- Selecting parent candidates")
             let candidates = reproduction.selectParentCandidates(from: solutions)
-            
-            print("---- Performing natural selection")
             solutions = fitness.performNaturalSelection(from: solutions)
 
-            print("---- Mating parents for new organisms")
             while solutions.count < population.numberOfOrganisms {
                 let (parent1, parent2) = reproduction.selectParents(from: candidates)
                 var children = reproduction.mate(firstParent: parent1, secondParent: parent2)
                 children = children.map({ mutation.mutate($0) })
                 solutions.append(contentsOf: children)
             }
+            
+            computeSolutionScores()
+            sortSolutions()
+            
+            let bestScore = solutions[0].score
+            
+            if bestScore == fitness.bestScore {
+                let bestSolutions = solutions.filter({ $0.score == fitness.bestScore })
+                var fittest = [Organism]()
+                for solution in bestSolutions {
+                    if !fittest.contains(solution) {
+                        fittest.append(solution)
+                    }
+                }
+                output?.didComplete(.fittestFound(i + 1, fittest))
+                return
+            }
+            
+            output?.didUpdatePopulation(i + 1, bestOrganisms: solutions.filter({ $0.score == bestScore }))
         }
         
-        print("---- Solution not found")
-        print("---- Best score:", solutionBestScore)
-        print(solutions.filter({ $0.score == solutionBestScore }))
-        print("===============================================")
+        var uniqueSolutions = [Organism]()
+        for solution in solutions {
+            if !uniqueSolutions.contains(solution) {
+                uniqueSolutions.append(solution)
+            }
+        }
+        uniqueSolutions = uniqueSolutions.sorted(by: { $0.score > $1.score })
+        output?.didComplete(.generationFinished(uniqueSolutions))
     }
     
     private mutating func generateInitialSolutions() {
@@ -119,4 +119,16 @@ public protocol ReproductionProtocol {
     func selectParentCandidates(from organisms: [Organism]) -> [Organism]
     func selectParents(from organisms: [Organism]) -> (Organism, Organism)
     func mate(firstParent: Organism, secondParent: Organism) -> [Organism]
+}
+
+public protocol GeneticAlgorithmOutputProtocol {
+    
+    func didComplete(_ result: GeneticAlgorithmResult)
+    func didUpdatePopulation(_ generation: Int, bestOrganisms: [Organism])
+}
+
+public enum GeneticAlgorithmResult {
+    
+    case fittestFound(Int, [Organism])
+    case generationFinished([Organism])
 }

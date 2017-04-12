@@ -36,33 +36,33 @@ import Foundation
 //    0,0,0, 0,8,0, 0,7,9
 //]
 
-//let data = [
-//    0,0,0, 0,5,0, 0,0,0,
-//    0,0,6, 4,0,3, 1,0,0,
-//    0,7,1, 2,6,8, 3,5,0,
-//    
-//    0,9,5, 0,3,0, 6,4,0,
-//    1,0,8, 5,0,6, 7,0,3,
-//    0,6,4, 0,1,0, 5,2,0,
-//    
-//    0,5,2, 9,8,1, 4,3,0,
-//    0,0,9, 3,0,4, 2,0,0,
-//    0,0,0, 0,2,0, 0,0,0
-//]
-
 let data = [
-    0,0,5, 1,3,4, 9,8,7,
-    0,7,9, 2,8,5, 6,3,4,
-    4,8,3, 9,7,6, 1,2,5,
+    0,0,0, 0,5,0, 0,0,0,
+    0,0,6, 4,0,3, 1,0,0,
+    0,7,1, 2,6,8, 3,5,0,
     
-    8,4,1, 5,2,9, 7,6,3,
-    5,3,7, 6,1,8, 4,9,2,
-    9,6,2, 3,4,7, 8,5,1,
+    0,9,5, 0,3,0, 6,4,0,
+    1,0,8, 5,0,6, 7,0,3,
+    0,6,4, 0,1,0, 5,2,0,
     
-    7,1,6, 8,5,2, 3,4,9,
-    2,9,4, 7,6,3, 5,1,8,
-    3,5,8, 4,9,1, 2,7,6
+    0,5,2, 9,8,1, 4,3,0,
+    0,0,9, 3,0,4, 2,0,0,
+    0,0,0, 0,2,0, 0,0,0
 ]
+
+//let data = [
+//    0,0,5, 1,3,4, 9,8,7,
+//    0,7,9, 2,8,5, 6,3,4,
+//    4,8,3, 9,7,6, 1,2,5,
+//    
+//    8,4,1, 5,2,9, 7,6,3,
+//    5,3,7, 6,1,8, 4,9,2,
+//    9,6,2, 3,4,7, 8,5,1,
+//    
+//    7,1,6, 8,5,2, 3,4,9,
+//    2,9,4, 7,6,3, 5,1,8,
+//    3,5,8, 4,9,1, 2,7,6
+//]
 
 var chromosomes: [Chromosome] {
     var chromosomes = [Chromosome]()
@@ -77,16 +77,17 @@ var chromosomes: [Chromosome] {
     return chromosomes
 }
 
-var fitness = Elitism(survivalRate: 5)
+var fitness = Elitism(survivalRate: 30)
 var population = Population()
 var organism = Organism()
+var mutation = RandomMutation()
 
-let mutation = RandomMutation()
-let reproduction = Reproduction(fitness: fitness)
+let reproduction = Reproduction2(fitness: fitness)
 
+mutation.rate = 5
 organism.chromosomes = chromosomes
 population.numberOfGenerations = 10
-population.numberOfOrganisms = 50
+population.numberOfOrganisms = 100
 
 var algo = GeneticAlgorithm(
     organism: organism,

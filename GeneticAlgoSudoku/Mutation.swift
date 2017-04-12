@@ -15,7 +15,6 @@ public struct RandomMutation: MutationProtocol {
         return UInt32(rate) <= arc4random() % 100 + 1
     }
     
-    
     public func mutate(_ organism: Organism) -> Organism {
         guard isAllowed else { return organism }
         

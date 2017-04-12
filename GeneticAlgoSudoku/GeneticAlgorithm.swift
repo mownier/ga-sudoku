@@ -31,35 +31,71 @@ public struct GeneticAlgorithm {
         computeSolutionScores()
         sortSolutions()
         
+        var bestScore: Int = 0
+        var bestScoreCount: Int = 0
+        
         for i in 0..<population.numberOfGenerations {
             let candidates = reproduction.selectParentCandidates(from: solutions)
+            output?.didSelectParentCandidates(candidates)
+            
             solutions = fitness.performNaturalSelection(from: solutions)
-
+            output?.didPerformNaturalSelection(solutions)
+            
             while solutions.count < population.numberOfOrganisms {
                 let (parent1, parent2) = reproduction.selectParents(from: candidates)
+                output?.didSelectParents(parent1, parent2)
+                
                 var children = reproduction.mate(firstParent: parent1, secondParent: parent2)
-                children = children.map({ mutation.mutate($0) })
-                solutions.append(contentsOf: children)
+                output?.didMate(children)
+                
+                children = children.map({
+                    let child = mutation.mutate($0)
+                    if child == $0 {
+                        output?.didChildMutate($0)
+                    }
+                    return child
+                })
+                
+                var i = 0
+                while solutions.count < population.numberOfOrganisms && i < children.count {
+                    solutions.append(children[i])
+                    i += 1
+                }
             }
             
             computeSolutionScores()
             sortSolutions()
             
-            let bestScore = solutions[0].score
-            
-            if bestScore == fitness.bestScore {
-                let bestSolutions = solutions.filter({ $0.score == fitness.bestScore })
-                var fittest = [Organism]()
-                for solution in bestSolutions {
-                    if !fittest.contains(solution) {
-                        fittest.append(solution)
+            if solutions[0].score > bestScore {
+                bestScore = solutions[0].score
+                bestScoreCount = 0
+                
+                if bestScore == fitness.bestScore {
+                    let bestSolutions = solutions.filter({ $0.score == fitness.bestScore })
+                    var fittest = [Organism]()
+                    for solution in bestSolutions {
+                        if !fittest.contains(solution) {
+                            fittest.append(solution)
+                        }
                     }
+                    output?.didComplete(.fittestFound(i + 1, fittest))
+                    return
                 }
-                output?.didComplete(.fittestFound(i + 1, fittest))
-                return
+            
+            } else {
+                bestScoreCount += 1
             }
             
             output?.didUpdatePopulation(i + 1, bestOrganisms: solutions.filter({ $0.score == bestScore }))
+            
+            var uniqueSolutions = [Organism]()
+            for solution in solutions {
+                if !uniqueSolutions.contains(solution) {
+                    uniqueSolutions.append(solution)
+                }
+            }
+            
+            solutions = uniqueSolutions
         }
         
         var uniqueSolutions = [Organism]()
@@ -85,6 +121,7 @@ public struct GeneticAlgorithm {
         solutions = solutions.map({
             var organism = $0
             organism.score = fitness.computeScore(for: $0)
+            output?.didComputeScore(for: organism)
             return organism
         })
     }
@@ -125,6 +162,12 @@ public protocol GeneticAlgorithmOutputProtocol {
     
     func didComplete(_ result: GeneticAlgorithmResult)
     func didUpdatePopulation(_ generation: Int, bestOrganisms: [Organism])
+    func didComputeScore(for organism: Organism)
+    func didPerformNaturalSelection(_ survivedOrganisms: [Organism])
+    func didSelectParentCandidates(_ candidates: [Organism])
+    func didSelectParents(_ parent1: Organism, _ parent2: Organism)
+    func didMate(_ children: [Organism])
+    func didChildMutate(_ child: Organism)
 }
 
 public enum GeneticAlgorithmResult {

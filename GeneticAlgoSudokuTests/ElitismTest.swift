@@ -26,4 +26,16 @@ class ElitismTest: XCTestCase {
         let score = elitism.computeScore(for: organism)
         XCTAssertEqual(score, elitism.bestScore)
     }
+    
+    func testPeformNaturalSelection() {
+        let elitism = Elitism(survivalRate: 5)
+        var organisms = [Organism]()
+        for _ in 0..<100 {
+            var organism = Organism()
+            organism.score = Int(arc4random()) % 100 + 1
+            organisms.append(organism)
+        }
+        let survivedOrganisms = elitism.performNaturalSelection(from: organisms)
+        XCTAssertEqual(survivedOrganisms.count, 5)
+    }
 }

@@ -15,31 +15,48 @@ public protocol FileOutputProtocol {
 
 public protocol FileWriterProtocol {
     
-    func write(_ info: [String: Any])
+    func write(_ info: [String: Any], file: String)
 }
 
 public protocol FileReaderProtocol {
     
-    func read(from filePath: String, completion: ([String: Any]) -> Void)
+    func read(from filePath: String) -> [String: Any]?
 }
 
 public struct FileWriter: FileWriterProtocol {
     
-    public func write(_ info: [String : Any]) {
+    public func write(_ info: [String : Any], file: String) {
         let fileManager = FileManager.default
         var isDirectory: ObjCBool = false
         do {
             if !fileManager.fileExists(atPath: "output", isDirectory: &isDirectory) && !isDirectory.boolValue {
                 try fileManager.createDirectory(atPath: "output", withIntermediateDirectories: false, attributes: nil)
             }
-            let timestamp = Date().timeIntervalSince1970
             let data = try JSONSerialization.data(withJSONObject: info, options: .prettyPrinted)
-            if !fileManager.createFile(atPath: "output/\(timestamp).json", contents: data, attributes: nil) {
-                print("Could not create JSON file")
+            if !fileManager.createFile(atPath: "output/\(file)", contents: data, attributes: nil) {
+                print("Could not create file")
             }
             
         } catch {
             print("Failed to write")
+        }
+    }
+}
+
+public struct FileReader: FileReaderProtocol {
+    
+    public func read(from filePath: String) -> [String : Any]? {
+        let fileManager = FileManager.default
+        
+        guard fileManager.fileExists(atPath: filePath),
+            let data = fileManager.contents(atPath: filePath) else {
+            return nil
+        }
+        
+        do {
+            return try JSONSerialization.jsonObject(with: data, options: .mutableContainers) as? [String: Any]
+        } catch {
+            return nil
         }
     }
 }

@@ -49,13 +49,20 @@ public struct GeneticAlgorithm {
                 output?.didSelectParents(parent1, parent2)
                 
                 var children = reproduction.mate(firstParent: parent1, secondParent: parent2)
+                children = children.map({
+                    var child = $0
+                    child.score = fitness.computeScore(for: $0)
+                    return child
+                })
                 output?.didMate(children)
                 
                 children = children.map({
-                    let child = mutation.mutate($0)
-                    if child == $0 {
-                        output?.didChildMutate($0)
-                    }
+                    guard mutation.isAllowed else { return $0 }
+                    
+                    var child = mutation.mutate($0)
+                    child.score = fitness.computeScore(for: child)
+                    output?.didChildMutate(child)
+                    
                     return child
                 })
                 
@@ -90,25 +97,9 @@ public struct GeneticAlgorithm {
             }
             
             output?.didUpdatePopulation(i + 1, bestOrganisms: solutions.filter({ $0.score == bestScore }))
-            
-            var uniqueSolutions = [Organism]()
-            for solution in solutions {
-                if !uniqueSolutions.contains(solution) {
-                    uniqueSolutions.append(solution)
-                }
-            }
-            
-            solutions = uniqueSolutions
         }
         
-        var uniqueSolutions = [Organism]()
-        for solution in solutions {
-            if !uniqueSolutions.contains(solution) {
-                uniqueSolutions.append(solution)
-            }
-        }
-        uniqueSolutions = uniqueSolutions.sorted(by: { $0.score > $1.score })
-        output?.didComplete(self, .generationFinished(uniqueSolutions))
+        output?.didComplete(self, .generationFinished(solutions))
     }
     
     private mutating func generateInitialSolutions() {

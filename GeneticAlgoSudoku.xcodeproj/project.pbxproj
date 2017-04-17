@@ -21,6 +21,8 @@
 		B90B79891E96204A00B38049 /* Organism.swift in Sources */ = {isa = PBXBuildFile; fileRef = B90B79881E96204A00B38049 /* Organism.swift */; };
 		B90B798B1E96293E00B38049 /* GeneticAlgorithm.swift in Sources */ = {isa = PBXBuildFile; fileRef = B90B798A1E96293E00B38049 /* GeneticAlgorithm.swift */; };
 		B97BFD061EA452A80046E642 /* FileIO.swift in Sources */ = {isa = PBXBuildFile; fileRef = B97BFD051EA452A80046E642 /* FileIO.swift */; };
+		B97BFD081EA492050046E642 /* Parameter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B97BFD071EA492050046E642 /* Parameter.swift */; };
+		B97BFD0A1EA495480046E642 /* Sudoku.swift in Sources */ = {isa = PBXBuildFile; fileRef = B97BFD091EA495480046E642 /* Sudoku.swift */; };
 		B97D58361E9769BF001B522F /* Mutation.swift in Sources */ = {isa = PBXBuildFile; fileRef = B97D58351E9769BF001B522F /* Mutation.swift */; };
 		B97D58381E977061001B522F /* Fitness.swift in Sources */ = {isa = PBXBuildFile; fileRef = B97D58371E977061001B522F /* Fitness.swift */; };
 		B97D583A1E9779B9001B522F /* Population.swift in Sources */ = {isa = PBXBuildFile; fileRef = B97D58391E9779B9001B522F /* Population.swift */; };
@@ -54,6 +56,8 @@
 		B90B79881E96204A00B38049 /* Organism.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Organism.swift; sourceTree = "<group>"; };
 		B90B798A1E96293E00B38049 /* GeneticAlgorithm.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeneticAlgorithm.swift; sourceTree = "<group>"; };
 		B97BFD051EA452A80046E642 /* FileIO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileIO.swift; sourceTree = "<group>"; };
+		B97BFD071EA492050046E642 /* Parameter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Parameter.swift; sourceTree = "<group>"; };
+		B97BFD091EA495480046E642 /* Sudoku.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Sudoku.swift; sourceTree = "<group>"; };
 		B97D58351E9769BF001B522F /* Mutation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Mutation.swift; sourceTree = "<group>"; };
 		B97D58371E977061001B522F /* Fitness.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Fitness.swift; sourceTree = "<group>"; };
 		B97D58391E9779B9001B522F /* Population.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Population.swift; sourceTree = "<group>"; };
@@ -138,8 +142,10 @@
 				B97D58351E9769BF001B522F /* Mutation.swift */,
 				B90B79881E96204A00B38049 /* Organism.swift */,
 				B9C498BF1E9B507600144E12 /* Output.swift */,
+				B97BFD071EA492050046E642 /* Parameter.swift */,
 				B97D58391E9779B9001B522F /* Population.swift */,
 				B97D583D1E977D01001B522F /* Reproduction.swift */,
+				B97BFD091EA495480046E642 /* Sudoku.swift */,
 			);
 			name = Source;
 			sourceTree = "<group>";
@@ -258,6 +264,8 @@
 				B97D58381E977061001B522F /* Fitness.swift in Sources */,
 				B90B79801E960F5800B38049 /* main.swift in Sources */,
 				B9845BD71E9C821B0049C6E7 /* Board.swift in Sources */,
+				B97BFD081EA492050046E642 /* Parameter.swift in Sources */,
+				B97BFD0A1EA495480046E642 /* Sudoku.swift in Sources */,
 				B90B79871E96187600B38049 /* Chromosome.swift in Sources */,
 				B97D583E1E977D01001B522F /* Reproduction.swift in Sources */,
 				B9C498C01E9B507600144E12 /* Output.swift in Sources */,

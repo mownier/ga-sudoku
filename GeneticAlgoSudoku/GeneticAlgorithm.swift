@@ -78,7 +78,7 @@ public struct GeneticAlgorithm {
                             fittest.append(solution)
                         }
                     }
-                    output?.didComplete(.fittestFound(i + 1, fittest))
+                    output?.didComplete(self, .fittestFound(i + 1, fittest))
                     return
                 }
             
@@ -105,7 +105,7 @@ public struct GeneticAlgorithm {
             }
         }
         uniqueSolutions = uniqueSolutions.sorted(by: { $0.score > $1.score })
-        output?.didComplete(.generationFinished(uniqueSolutions))
+        output?.didComplete(self, .generationFinished(uniqueSolutions))
     }
     
     private mutating func generateInitialSolutions() {
@@ -160,7 +160,7 @@ public protocol ReproductionProtocol {
 
 public protocol GeneticAlgorithmOutputProtocol {
     
-    func didComplete(_ result: GeneticAlgorithmResult)
+    func didComplete(_ algorith: GeneticAlgorithm, _ result: GeneticAlgorithmResult)
     func didUpdatePopulation(_ generation: Int, bestOrganisms: [Organism])
     func didComputeScore(for organism: Organism)
     func didPerformNaturalSelection(_ survivedOrganisms: [Organism])

@@ -82,7 +82,7 @@ var population = Population()
 var organism = Organism()
 var mutation = RandomMutation()
 
-let reproduction = Reproduction2(fitness: fitness)
+let reproduction = Reproduction(fitness: fitness)
 
 mutation.rate = 5
 organism.chromosomes = chromosomes

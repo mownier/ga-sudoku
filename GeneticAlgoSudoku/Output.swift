@@ -17,9 +17,50 @@ public class TerminalOutput: GeneticAlgorithmOutputProtocol {
     public func didComplete(_ algo: GeneticAlgorithm, _ result: GeneticAlgorithmResult) {
         switch result {
         case .fittestFound(let generation, let organisms):
+            executions.append(CFAbsoluteTimeGetCurrent() - startTime)
+            var info = [String: Any]()
+            
+            info["executions"] = executions
+            
             print("Solution found")
             print("On generation:", generation)
-            organisms.forEach({ print($0) })
+            
+            var organismsInfo = [[String: Any]]()
+            organisms.forEach({
+                print($0)
+                organismsInfo.append($0.fileOutputInfo)
+            })
+            
+            info["organisms"] = organismsInfo
+            
+            if let outputProtocol = algo.population as? FileOutputProtocol {
+                info["population"] = outputProtocol.fileOutputInfo
+            }
+            
+            if let outputProtocol = algo.mutation as? FileOutputProtocol {
+                info["mutation"] = outputProtocol.fileOutputInfo
+            }
+            
+            if let outputProtocol = algo.fitness as? FileOutputProtocol {
+                info["fitness"] = outputProtocol.fileOutputInfo
+            }
+            
+            if !organisms.isEmpty {
+                var given = [String: Any]()
+                var givenData = [Int]()
+                var givenIndices = [Int]()
+                organisms[0].chromosomes.enumerated().forEach({
+                    if $1.isGiven {
+                        givenIndices.append($0)
+                        givenData.append($1.data)
+                    }
+                })
+                given["indices"] = givenIndices
+                given["data"]  = givenData
+                info["given"] = given
+            }
+            
+            writer.write(info, file: "solved.json")
             
         case .generationFinished(let organisms):
             executions.append(CFAbsoluteTimeGetCurrent() - startTime)
@@ -51,13 +92,6 @@ public class TerminalOutput: GeneticAlgorithmOutputProtocol {
                 info["fitness"] = outputProtocol.fileOutputInfo
             }
             
-            if let organism = organisms.max(by: { $0.score <= $1.score }) {
-                info["current_best_score"] = organism.score
-            
-            } else {
-                info["current_best_score"] = 0
-            }
-            
             if !organisms.isEmpty {
                 var given = [String: Any]()
                 var givenData = [Int]()
@@ -74,6 +108,13 @@ public class TerminalOutput: GeneticAlgorithmOutputProtocol {
             
             } else {
                 info["given"] = [String: Any]()
+            }
+            
+            if let organism = organisms.max(by: { $0.score <= $1.score }) {
+                info["current_best_score"] = organism.score
+                
+            } else {
+                info["current_best_score"] = 0
             }
             
             writer.write(info, file: "unsolved.json")

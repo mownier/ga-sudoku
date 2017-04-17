@@ -6,6 +6,8 @@
 //  Copyright © 2017 Ner. All rights reserved.
 //
 
+import Foundation
+
 public struct Parameter {
 
     public var survivalRate: Int
@@ -14,7 +16,7 @@ public struct Parameter {
     public var initialOrganisms: [Organism]?
     public var generationCount: Int
     public var organismCount: Int
-    public var solveCount: Int
+    public var executions: [CFAbsoluteTime]
     
     public var reader: FileReaderProtocol
     
@@ -25,8 +27,8 @@ public struct Parameter {
         self.organismCount = 100
         self.initialOrganism = Organism()
         self.initialOrganisms = nil
-        self.solveCount = 1
         self.reader = reader
+        self.executions = [CFAbsoluteTime]()
     }
     
     public mutating func process(from file: String = "output/unsolved.json") -> Bool {
@@ -45,7 +47,7 @@ public struct Parameter {
         mutationRate = mutationInfo["rate"] as! Int
         generationCount = populationInfo["generation_count"] as! Int
         organismCount = populationInfo["organism_count"] as! Int
-        solveCount += info["solve_count"] as! Int
+        executions = info["executions"] as! [CFAbsoluteTime]
         
         var organism = Organism()
         

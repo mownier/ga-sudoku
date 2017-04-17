@@ -11,6 +11,7 @@ import Foundation
 public struct TerminalOutput: GeneticAlgorithmOutputProtocol {
 
     var writer: FileWriterProtocol = FileWriter()
+    var solveCount: Int = 1
     
     public func didComplete(_ algo: GeneticAlgorithm, _ result: GeneticAlgorithmResult) {
         switch result {
@@ -70,6 +71,8 @@ public struct TerminalOutput: GeneticAlgorithmOutputProtocol {
             } else {
                 info["given"] = [String: Any]()
             }
+            
+            info["solve_count"] = solveCount
             
             writer.write(info, file: "unsolved.json")
         }

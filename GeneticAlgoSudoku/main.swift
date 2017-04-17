@@ -16,6 +16,7 @@ var fitness = Elitism(survivalRate: param.survivalRate)
 var population = Population()
 var organism = Organism()
 var mutation = RandomMutation()
+var output = TerminalOutput()
 
 let reproduction = Reproduction(fitness: fitness)
 
@@ -23,6 +24,7 @@ mutation.rate = param.mutationRate
 population.numberOfGenerations = param.generationCount
 population.numberOfOrganisms = param.organismCount
 population.initialOrganisms = param.initialOrganisms
+output.solveCount = param.solveCount
 
 var algo = GeneticAlgorithm(
     organism: param.initialOrganism,
@@ -31,5 +33,5 @@ var algo = GeneticAlgorithm(
     mutation: mutation,
     reproduction: reproduction
 )
-algo.output = TerminalOutput()
+algo.output = output
 algo.solve()

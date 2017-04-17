@@ -56,18 +56,9 @@ extension Organism: CustomStringConvertible {
 extension Organism: FileOutputProtocol {
     
     public var fileOutputInfo: [String : Any] {
-        var info: [String : Any] = [
-            "score": score
+        return [
+            "score": score,
+            "chromosomes": chromosomes.map({ $0.data })
         ]
-        
-        var given = [Int]()
-        chromosomes.enumerated().forEach({
-            if $1.isGiven { given.append($0) }
-        })
-        
-        info["given_indices"] = given
-        info["chromosomes"] = chromosomes.map({ $0.data })
-        
-        return info
     }
 }

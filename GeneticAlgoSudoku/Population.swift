@@ -33,6 +33,18 @@ public struct Population: PopulationProtocol {
         }
         return organisms
     }
+    
+    public func generateRandomOrganism(from organism: Organism) -> Organism {
+        var randomOrganism = Organism()
+        randomOrganism.chromosomes = organism.chromosomes.map({
+            guard !$0.isGiven else { return $0 }
+            
+            var chromosome = $0
+            chromosome.data = (Int(arc4random()) % 9) + 1
+            return chromosome
+        })
+        return randomOrganism
+    }
 }
 
 extension Population: FileOutputProtocol {

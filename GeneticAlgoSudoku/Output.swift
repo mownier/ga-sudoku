@@ -6,9 +6,13 @@
 //  Copyright © 2017 Ner. All rights reserved.
 //
 
+import Foundation
+
 public struct TerminalOutput: GeneticAlgorithmOutputProtocol {
 
-    public func didComplete(_ result: GeneticAlgorithmResult) {
+    var writer: FileWriterProtocol = FileWriter()
+    
+    public func didComplete(_ algo: GeneticAlgorithm, _ result: GeneticAlgorithmResult) {
         switch result {
         case .fittestFound(let generation, let organisms):
             print("Solution found")
@@ -17,10 +21,39 @@ public struct TerminalOutput: GeneticAlgorithmOutputProtocol {
             
         case .generationFinished(let organisms):
             print("Solution not found")
+            
+            var organismsInfo = [[String: Any]]()
             organisms.sorted(by: { $0.score < $1.score }).forEach({
                 print("\nScore:", $0.score)
                 print($0)
+                
+                organismsInfo.append($0.fileOutputInfo)
             })
+            
+            var info = [String: Any]()
+            
+            info["organisms"] = organismsInfo
+            
+            if let outputProtocol = algo.population as? FileOutputProtocol {
+                info["population"] = outputProtocol.fileOutputInfo
+            }
+            
+            if let outputProtocol = algo.mutation as? FileOutputProtocol {
+                info["mutation"] = outputProtocol.fileOutputInfo
+            }
+            
+            if let outputProtocol = algo.fitness as? FileOutputProtocol {
+                info["fitness"] = outputProtocol.fileOutputInfo
+            }
+            
+            if let organism = organisms.max(by: { $0.score >= $1.score }) {
+                info["current_best_score"] = organism.score
+            
+            } else {
+                info["current_best_score"] = 0
+            }
+            
+            writer.write(info)
         }
     }
     

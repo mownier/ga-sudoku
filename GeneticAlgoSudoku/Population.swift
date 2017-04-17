@@ -34,3 +34,13 @@ public struct Population: PopulationProtocol {
         return organisms
     }
 }
+
+extension Population: FileOutputProtocol {
+    
+    public var fileOutputInfo: [String : Any] {
+        return [
+            "organism_count": numberOfOrganisms,
+            "generation_count": numberOfGenerations
+        ]
+    }
+}

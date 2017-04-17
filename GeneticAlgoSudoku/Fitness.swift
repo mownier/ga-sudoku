@@ -55,3 +55,13 @@ public struct Elitism: FitnessProtocol {
         nonDuplicateCount += box.filter({ $0.data == data }).count > 1 ? 0 : 1
     }
 }
+
+extension Elitism: FileOutputProtocol {
+    
+    public var fileOutputInfo: [String : Any] {
+        return [
+            "survival_rate": survivalRate,
+            "best_score": bestScore
+        ]
+    }
+}

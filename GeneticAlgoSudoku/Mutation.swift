@@ -34,3 +34,12 @@ public struct RandomMutation: MutationProtocol {
         return newOrganism
     }
 }
+
+extension RandomMutation: FileOutputProtocol {
+    
+    public var fileOutputInfo: [String : Any] {
+        return [
+            "rate": rate
+        ]
+    }
+}

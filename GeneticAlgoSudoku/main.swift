@@ -7,7 +7,7 @@
 //
 
 var param = Parameter()
-if param.process() {
+if !param.process() {
     let sudoku = Sudoku(puzzle: .three)
     param.initialOrganism.chromosomes = sudoku.chromosomes
 }

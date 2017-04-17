@@ -35,7 +35,10 @@ public struct GeneticAlgorithm {
         var bestScoreCount: Int = 0
         
         for i in 0..<population.numberOfGenerations {
-            let candidates = reproduction.selectParentCandidates(from: solutions)
+            var candidates = reproduction.selectParentCandidates(from: solutions)
+            if candidates.isEmpty {
+                candidates.append(population.generateRandomOrganism(from: organism))
+            }
             output?.didSelectParentCandidates(candidates)
             
             solutions = fitness.performNaturalSelection(from: solutions)
@@ -133,6 +136,7 @@ public protocol PopulationProtocol {
     var numberOfGenerations: Int { get }
     
     func generateInitialOrganisms(from organism: Organism) -> [Organism]
+    func generateRandomOrganism(from organism: Organism) -> Organism
 }
 
 public protocol FitnessProtocol {

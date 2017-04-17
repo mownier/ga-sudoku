@@ -8,10 +8,11 @@
 
 import Foundation
 
-public struct TerminalOutput: GeneticAlgorithmOutputProtocol {
+public class TerminalOutput: GeneticAlgorithmOutputProtocol {
 
     var writer: FileWriterProtocol = FileWriter()
-    var solveCount: Int = 1
+    var executions: [CFAbsoluteTime]!
+    var startTime: CFTimeInterval!
     
     public func didComplete(_ algo: GeneticAlgorithm, _ result: GeneticAlgorithmResult) {
         switch result {
@@ -21,6 +22,11 @@ public struct TerminalOutput: GeneticAlgorithmOutputProtocol {
             organisms.forEach({ print($0) })
             
         case .generationFinished(let organisms):
+            executions.append(CFAbsoluteTimeGetCurrent() - startTime)
+            var info = [String: Any]()
+            
+            info["executions"] = executions
+            
             print("Solution not found")
             
             var organismsInfo = [[String: Any]]()
@@ -30,8 +36,6 @@ public struct TerminalOutput: GeneticAlgorithmOutputProtocol {
                 
                 organismsInfo.append($0.fileOutputInfo)
             })
-            
-            var info = [String: Any]()
             
             info["organisms"] = organismsInfo
             
@@ -71,8 +75,6 @@ public struct TerminalOutput: GeneticAlgorithmOutputProtocol {
             } else {
                 info["given"] = [String: Any]()
             }
-            
-            info["solve_count"] = solveCount
             
             writer.write(info, file: "unsolved.json")
         }

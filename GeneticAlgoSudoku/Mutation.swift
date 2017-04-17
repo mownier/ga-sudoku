@@ -12,12 +12,10 @@ public struct RandomMutation: MutationProtocol {
 
     public var rate: Int = 2 // 2 %
     public var isAllowed: Bool {
-        return UInt32(rate) <= arc4random() % 100 + 1
+        return  (arc4random() % 100 + 1) <= UInt32(rate)
     }
     
     public func mutate(_ organism: Organism) -> Organism {
-        guard isAllowed else { return organism }
-        
         var newOrganism = Organism()
         let randomIndex = Int(arc4random()) % organism.chromosomes.count
         newOrganism.chromosomes = organism.chromosomes.map({

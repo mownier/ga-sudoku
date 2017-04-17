@@ -46,14 +46,32 @@ public struct TerminalOutput: GeneticAlgorithmOutputProtocol {
                 info["fitness"] = outputProtocol.fileOutputInfo
             }
             
-            if let organism = organisms.max(by: { $0.score >= $1.score }) {
+            if let organism = organisms.max(by: { $0.score <= $1.score }) {
                 info["current_best_score"] = organism.score
             
             } else {
                 info["current_best_score"] = 0
             }
             
-            writer.write(info)
+            if !organisms.isEmpty {
+                var given = [String: Any]()
+                var givenData = [Int]()
+                var givenIndices = [Int]()
+                organisms[0].chromosomes.enumerated().forEach({
+                    if $1.isGiven {
+                        givenIndices.append($0)
+                        givenData.append($1.data)
+                    }
+                })
+                given["indices"] = givenIndices
+                given["data"]  = givenData
+                info["given"] = given
+            
+            } else {
+                info["given"] = [String: Any]()
+            }
+            
+            writer.write(info, file: "unsolved.json")
         }
     }
     

@@ -6,6 +6,8 @@
 //  Copyright © 2017 Ner. All rights reserved.
 //
 
+import Foundation
+
 var param = Parameter()
 if !param.process() {
     let sudoku = Sudoku(puzzle: .three)
@@ -24,7 +26,7 @@ mutation.rate = param.mutationRate
 population.numberOfGenerations = param.generationCount
 population.numberOfOrganisms = param.organismCount
 population.initialOrganisms = param.initialOrganisms
-output.solveCount = param.solveCount
+output.executions = param.executions
 
 var algo = GeneticAlgorithm(
     organism: param.initialOrganism,
@@ -34,4 +36,5 @@ var algo = GeneticAlgorithm(
     reproduction: reproduction
 )
 algo.output = output
+output.startTime = CFAbsoluteTimeGetCurrent()
 algo.solve()

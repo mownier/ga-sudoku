@@ -20,6 +20,7 @@
 		B90B79871E96187600B38049 /* Chromosome.swift in Sources */ = {isa = PBXBuildFile; fileRef = B90B79861E96187600B38049 /* Chromosome.swift */; };
 		B90B79891E96204A00B38049 /* Organism.swift in Sources */ = {isa = PBXBuildFile; fileRef = B90B79881E96204A00B38049 /* Organism.swift */; };
 		B90B798B1E96293E00B38049 /* GeneticAlgorithm.swift in Sources */ = {isa = PBXBuildFile; fileRef = B90B798A1E96293E00B38049 /* GeneticAlgorithm.swift */; };
+		B97BFD061EA452A80046E642 /* FileIO.swift in Sources */ = {isa = PBXBuildFile; fileRef = B97BFD051EA452A80046E642 /* FileIO.swift */; };
 		B97D58361E9769BF001B522F /* Mutation.swift in Sources */ = {isa = PBXBuildFile; fileRef = B97D58351E9769BF001B522F /* Mutation.swift */; };
 		B97D58381E977061001B522F /* Fitness.swift in Sources */ = {isa = PBXBuildFile; fileRef = B97D58371E977061001B522F /* Fitness.swift */; };
 		B97D583A1E9779B9001B522F /* Population.swift in Sources */ = {isa = PBXBuildFile; fileRef = B97D58391E9779B9001B522F /* Population.swift */; };
@@ -52,6 +53,7 @@
 		B90B79861E96187600B38049 /* Chromosome.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Chromosome.swift; sourceTree = "<group>"; };
 		B90B79881E96204A00B38049 /* Organism.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Organism.swift; sourceTree = "<group>"; };
 		B90B798A1E96293E00B38049 /* GeneticAlgorithm.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeneticAlgorithm.swift; sourceTree = "<group>"; };
+		B97BFD051EA452A80046E642 /* FileIO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileIO.swift; sourceTree = "<group>"; };
 		B97D58351E9769BF001B522F /* Mutation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Mutation.swift; sourceTree = "<group>"; };
 		B97D58371E977061001B522F /* Fitness.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Fitness.swift; sourceTree = "<group>"; };
 		B97D58391E9779B9001B522F /* Population.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Population.swift; sourceTree = "<group>"; };
@@ -128,7 +130,9 @@
 		B97D583C1E9779D0001B522F /* Source */ = {
 			isa = PBXGroup;
 			children = (
+				B9845BD61E9C821B0049C6E7 /* Board.swift */,
 				B90B79861E96187600B38049 /* Chromosome.swift */,
+				B97BFD051EA452A80046E642 /* FileIO.swift */,
 				B97D58371E977061001B522F /* Fitness.swift */,
 				B90B798A1E96293E00B38049 /* GeneticAlgorithm.swift */,
 				B97D58351E9769BF001B522F /* Mutation.swift */,
@@ -136,7 +140,6 @@
 				B9C498BF1E9B507600144E12 /* Output.swift */,
 				B97D58391E9779B9001B522F /* Population.swift */,
 				B97D583D1E977D01001B522F /* Reproduction.swift */,
-				B9845BD61E9C821B0049C6E7 /* Board.swift */,
 			);
 			name = Source;
 			sourceTree = "<group>";
@@ -262,6 +265,7 @@
 				B90B798B1E96293E00B38049 /* GeneticAlgorithm.swift in Sources */,
 				B90B79891E96204A00B38049 /* Organism.swift in Sources */,
 				B97D58361E9769BF001B522F /* Mutation.swift in Sources */,
+				B97BFD061EA452A80046E642 /* FileIO.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -12,6 +12,7 @@ public struct Population: PopulationProtocol {
 
     public var numberOfOrganisms: Int
     public var numberOfGenerations: Int
+    public var initialOrganisms: [Organism]?
     
     public init(organismCount: Int = 10, generationCount: Int = 100) {
         numberOfOrganisms = organismCount
@@ -19,6 +20,8 @@ public struct Population: PopulationProtocol {
     }
     
     public func generateInitialOrganisms(from organism: Organism) -> [Organism] {
+        guard initialOrganisms == nil else { return initialOrganisms! }
+        
         var organisms = [Organism]()
         for _ in 0..<numberOfOrganisms {
             var newOrganism = Organism()

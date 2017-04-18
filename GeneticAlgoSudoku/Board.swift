@@ -8,55 +8,26 @@
 
 public struct Board {
     
-    private var chromosomes: [Chromosome]
+    private(set) public var rows: [[Chromosome]]
+    private(set) public var columns: [[Chromosome]]
+    private(set) public var boxes: [[Chromosome]]
     
     public init(chromosomes: [Chromosome]) {
-        self.chromosomes = chromosomes
-    }
-    
-    public var rows: [[Chromosome]] {
-        var rows = [[Chromosome]]()
+        rows = [[Chromosome]]()
+        columns = [[Chromosome]]()
+        boxes = [[Chromosome]]()
         
         for _ in 0..<9 {
             rows.append([Chromosome]())
-        }
-        
-        for i in 0..<81 {
-            let index = row(for: i)
-            rows[index].append(chromosomes[i])
-        }
-        
-        return rows
-    }
-    
-    public var columns: [[Chromosome]] {
-        var columns = [[Chromosome]]()
-        
-        for _ in 0..<9 {
             columns.append([Chromosome]())
-        }
-        
-        for i in 0..<81 {
-            let index = column(for: i)
-            columns[index].append(chromosomes[i])
-        }
-        
-        return columns
-    }
-    
-    public var boxes: [[Chromosome]] {
-        var boxes = [[Chromosome]]()
-        
-        for _ in 0..<9 {
             boxes.append([Chromosome]())
         }
         
         for i in 0..<81 {
-            let index = box(for: i)
-            boxes[index].append(chromosomes[i])
+            rows[row(for: i)].append(chromosomes[i])
+            columns[column(for: i)].append(chromosomes[i])
+            boxes[box(for: i)].append(chromosomes[i])
         }
-        
-        return boxes
     }
     
     public func row(for index: Int) -> Int {

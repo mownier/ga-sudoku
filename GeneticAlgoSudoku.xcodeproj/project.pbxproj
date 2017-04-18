@@ -21,6 +21,9 @@
 		B90B79891E96204A00B38049 /* Organism.swift in Sources */ = {isa = PBXBuildFile; fileRef = B90B79881E96204A00B38049 /* Organism.swift */; };
 		B90B798B1E96293E00B38049 /* GeneticAlgorithm.swift in Sources */ = {isa = PBXBuildFile; fileRef = B90B798A1E96293E00B38049 /* GeneticAlgorithm.swift */; };
 		B957B5A01EA5C2750013A4F5 /* FileIO.swift in Sources */ = {isa = PBXBuildFile; fileRef = B97BFD051EA452A80046E642 /* FileIO.swift */; };
+		B957B5A21EA5D5170013A4F5 /* Backtrack.swift in Sources */ = {isa = PBXBuildFile; fileRef = B957B5A11EA5D5170013A4F5 /* Backtrack.swift */; };
+		B957B5A31EA5D51F0013A4F5 /* Backtrack.swift in Sources */ = {isa = PBXBuildFile; fileRef = B957B5A11EA5D5170013A4F5 /* Backtrack.swift */; };
+		B957B5A71EA5DF750013A4F5 /* BacktrackTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B957B5A61EA5DF750013A4F5 /* BacktrackTest.swift */; };
 		B97BFD061EA452A80046E642 /* FileIO.swift in Sources */ = {isa = PBXBuildFile; fileRef = B97BFD051EA452A80046E642 /* FileIO.swift */; };
 		B97BFD081EA492050046E642 /* Parameter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B97BFD071EA492050046E642 /* Parameter.swift */; };
 		B97BFD0A1EA495480046E642 /* Sudoku.swift in Sources */ = {isa = PBXBuildFile; fileRef = B97BFD091EA495480046E642 /* Sudoku.swift */; };
@@ -56,6 +59,8 @@
 		B90B79861E96187600B38049 /* Chromosome.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Chromosome.swift; sourceTree = "<group>"; };
 		B90B79881E96204A00B38049 /* Organism.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Organism.swift; sourceTree = "<group>"; };
 		B90B798A1E96293E00B38049 /* GeneticAlgorithm.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeneticAlgorithm.swift; sourceTree = "<group>"; };
+		B957B5A11EA5D5170013A4F5 /* Backtrack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Backtrack.swift; sourceTree = "<group>"; };
+		B957B5A61EA5DF750013A4F5 /* BacktrackTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BacktrackTest.swift; sourceTree = "<group>"; };
 		B97BFD051EA452A80046E642 /* FileIO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileIO.swift; sourceTree = "<group>"; };
 		B97BFD071EA492050046E642 /* Parameter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Parameter.swift; sourceTree = "<group>"; };
 		B97BFD091EA495480046E642 /* Sudoku.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Sudoku.swift; sourceTree = "<group>"; };
@@ -90,6 +95,7 @@
 			isa = PBXGroup;
 			children = (
 				B902F6EE1E98CDC400B91457 /* Info.plist */,
+				B957B5A61EA5DF750013A4F5 /* BacktrackTest.swift */,
 				B9C498C11E9B785E00144E12 /* BoardTest.swift */,
 				B902F6F21E98CDF900B91457 /* ElitismTest.swift */,
 				B902F6FB1E98D0F600B91457 /* TestHelper.swift */,
@@ -135,6 +141,7 @@
 		B97D583C1E9779D0001B522F /* Source */ = {
 			isa = PBXGroup;
 			children = (
+				B957B5A11EA5D5170013A4F5 /* Backtrack.swift */,
 				B9845BD61E9C821B0049C6E7 /* Board.swift */,
 				B90B79861E96187600B38049 /* Chromosome.swift */,
 				B97BFD051EA452A80046E642 /* FileIO.swift */,
@@ -245,6 +252,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B902F6F51E98CE2300B91457 /* Fitness.swift in Sources */,
+				B957B5A31EA5D51F0013A4F5 /* Backtrack.swift in Sources */,
 				B902F6F81E98CE2300B91457 /* Organism.swift in Sources */,
 				B9C498C21E9B785E00144E12 /* BoardTest.swift in Sources */,
 				B957B5A01EA5C2750013A4F5 /* FileIO.swift in Sources */,
@@ -253,6 +261,7 @@
 				B902F6FA1E98CE2300B91457 /* Reproduction.swift in Sources */,
 				B902F6F91E98CE2300B91457 /* Population.swift in Sources */,
 				B902F6F41E98CE1B00B91457 /* Chromosome.swift in Sources */,
+				B957B5A71EA5DF750013A4F5 /* BacktrackTest.swift in Sources */,
 				B902F6FC1E98D0F600B91457 /* TestHelper.swift in Sources */,
 				B902F6F61E98CE2300B91457 /* GeneticAlgorithm.swift in Sources */,
 				B902F6F71E98CE2300B91457 /* Mutation.swift in Sources */,
@@ -265,6 +274,7 @@
 			files = (
 				B97D58381E977061001B522F /* Fitness.swift in Sources */,
 				B90B79801E960F5800B38049 /* main.swift in Sources */,
+				B957B5A21EA5D5170013A4F5 /* Backtrack.swift in Sources */,
 				B9845BD71E9C821B0049C6E7 /* Board.swift in Sources */,
 				B97BFD081EA492050046E642 /* Parameter.swift in Sources */,
 				B97BFD0A1EA495480046E642 /* Sudoku.swift in Sources */,

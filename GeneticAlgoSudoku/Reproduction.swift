@@ -17,7 +17,8 @@ public struct Reproduction: ReproductionProtocol {
     }
     
     public func selectParentCandidates(from organisms: [Organism]) -> [Organism] {
-        return fitness.performNaturalSelection(from: organisms)
+        let survived = fitness.performNaturalSelection(from: organisms)
+        return organisms.filter({ !survived.contains($0) })
     }
     
     public func selectParents(from organisms: [Organism]) -> (Organism, Organism) {
@@ -25,10 +26,9 @@ public struct Reproduction: ReproductionProtocol {
         guard organisms.count > 1 else { return (organisms[0], organisms[0]) }
         guard organisms.count > 2 else { return (organisms[0], organisms[1]) }
         
-        let sorted = organisms.sorted(by: { $0.score > $1.score })
-        let parent1 = 0
-        let parent2 = (Int(arc4random()) % (sorted.count - 1)) + 1
-        return (sorted[parent1], sorted[parent2])
+        let parent1 = Int(arc4random()) % organisms.count
+        let parent2 = Int(arc4random()) % organisms.count
+        return (organisms[parent1], organisms[parent2])
     }
     
     public func mate(firstParent: Organism, secondParent: Organism) -> [Organism] {
@@ -40,94 +40,56 @@ public struct Reproduction: ReproductionProtocol {
         let numberOfCandidates = 4
         
         var crossoverPointCandidates1 = [[Chromosome]]()
-        for (index, chromosome) in chromosomes1.enumerated() {
+        var crossoverPointCandidates2 = [[Chromosome]]()
+        
+        for index in 0..<chromosomes1.count {
             let candidateIndex = index % numberOfCandidates
             if candidateIndex >= crossoverPointCandidates1.count {
                 crossoverPointCandidates1.append([Chromosome]())
-            }
-            crossoverPointCandidates1[candidateIndex].append(chromosome)
-        }
-        
-        var crossoverPointCandidates2 = [[Chromosome]]()
-        for (index, chromosome) in chromosomes2.enumerated() {
-            let candidateIndex = index % numberOfCandidates
-            if candidateIndex >= crossoverPointCandidates2.count {
                 crossoverPointCandidates2.append([Chromosome]())
             }
-            crossoverPointCandidates2[candidateIndex].append(chromosome)
+            crossoverPointCandidates1[candidateIndex].append(chromosomes1[index])
+            crossoverPointCandidates2[candidateIndex].append(chromosomes2[index])
         }
         
         var children = [Organism]()
         
-        if crossoverPointCandidates1.count < numberOfCandidates || crossoverPointCandidates2.count < numberOfCandidates {
-            let randomIndex1 = Int(arc4random()) % crossoverPointCandidates1.count
-            let randomIndex2 = Int(arc4random()) % crossoverPointCandidates2.count
-            
-            var candidates1 = crossoverPointCandidates1
-            var candidates2 = crossoverPointCandidates2
-            
-            candidates1[randomIndex1] = crossoverPointCandidates2[randomIndex2]
-            candidates2[randomIndex2] = crossoverPointCandidates1[randomIndex1]
-            
-            var child = Organism()
-            
-            var chromosomes: [Chromosome] = candidates1.flatMap({ $0 })
-            var index = 0
-            child.chromosomes = firstParent.chromosomes.map({
-                guard !$0.isGiven, index < chromosomes.count else { return $0 }
-                let chromosome = chromosomes[index]
-                index += 1
-                return chromosome
-            })
-            children.append(child)
-            
-            chromosomes = candidates2.flatMap({ $0 })
-            index = 0
-            child.chromosomes = secondParent.chromosomes.map({
-                guard !$0.isGiven, index < chromosomes.count else { return $0 }
-                let chromosome = chromosomes[index]
-                index += 1
-                return chromosome
-            })
-            children.append(child)
+        var candidates1 = crossoverPointCandidates1
+        var candidates2 = crossoverPointCandidates2
         
-        } else {
-            if crossoverPointCandidates1.count == numberOfCandidates &&
-                crossoverPointCandidates2.count == numberOfCandidates &&
-                crossoverPointCandidates1.count == crossoverPointCandidates2.count {
-                var candidates1 = crossoverPointCandidates1
-                var candidates2 = crossoverPointCandidates2
-                
-                candidates1[0] = crossoverPointCandidates2[1]
-                candidates1[2] = crossoverPointCandidates2[3]
-                
-                candidates2[0] = crossoverPointCandidates1[1]
-                candidates2[2] = crossoverPointCandidates1[3]
-                
-                var child = Organism()
-                
-                var chromosomes: [Chromosome] = candidates1.flatMap({ $0 })
-                var index = 0
-                child.chromosomes = firstParent.chromosomes.map({
-                    guard !$0.isGiven, index < chromosomes.count else { return $0 }
-                    let chromosome = chromosomes[index]
-                    index += 1
-                    return chromosome
-                })
-                children.append(child)
-                
-                chromosomes = candidates2.flatMap({ $0 })
-                index = 0
-                child.chromosomes = secondParent.chromosomes.map({
-                    guard !$0.isGiven, index < chromosomes.count else { return $0 }
-                    let chromosome = chromosomes[index]
-                    index += 1
-                    return chromosome
-                })
-                children.append(child)
-            }
-        }
+        let swapIndex1 = Int(arc4random()) % numberOfCandidates
+        let swapIndex2 = Int(arc4random()) % numberOfCandidates
+        let swapIndex3 = Int(arc4random()) % numberOfCandidates
+        let swapIndex4 = Int(arc4random()) % numberOfCandidates
         
+        candidates1[swapIndex3] = crossoverPointCandidates2[swapIndex1]
+        candidates1[swapIndex4] = crossoverPointCandidates2[swapIndex2]
+        
+        candidates2[swapIndex3] = crossoverPointCandidates1[swapIndex1]
+        candidates2[swapIndex4] = crossoverPointCandidates1[swapIndex2]
+        
+        var child = Organism()
+        
+        var chromosomes: [Chromosome] = candidates1.flatMap({ $0 })
+        var index = 0
+        child.chromosomes = firstParent.chromosomes.map({
+            guard !$0.isGiven, index < chromosomes.count else { return $0 }
+            let chromosome = chromosomes[index]
+            index += 1
+            return chromosome
+        })
+        children.append(child)
+        
+        chromosomes = candidates2.flatMap({ $0 })
+        index = 0
+        child.chromosomes = secondParent.chromosomes.map({
+            guard !$0.isGiven, index < chromosomes.count else { return $0 }
+            let chromosome = chromosomes[index]
+            index += 1
+            return chromosome
+        })
+        children.append(child)
+    
         return children
     }
 }

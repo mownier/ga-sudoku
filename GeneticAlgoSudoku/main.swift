@@ -19,6 +19,7 @@ var population = Population()
 var organism = Organism()
 var mutation = RandomMutation()
 var output = TerminalOutput()
+var backtrack = Backtrack()
 
 let reproduction = Reproduction(fitness: fitness)
 
@@ -35,6 +36,8 @@ var algo = GeneticAlgorithm(
     mutation: mutation,
     reproduction: reproduction
 )
+
+algo.backtrack = backtrack
 algo.output = output
 output.startTime = CFAbsoluteTimeGetCurrent()
 algo.solve()

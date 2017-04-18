@@ -20,6 +20,7 @@
 		B90B79871E96187600B38049 /* Chromosome.swift in Sources */ = {isa = PBXBuildFile; fileRef = B90B79861E96187600B38049 /* Chromosome.swift */; };
 		B90B79891E96204A00B38049 /* Organism.swift in Sources */ = {isa = PBXBuildFile; fileRef = B90B79881E96204A00B38049 /* Organism.swift */; };
 		B90B798B1E96293E00B38049 /* GeneticAlgorithm.swift in Sources */ = {isa = PBXBuildFile; fileRef = B90B798A1E96293E00B38049 /* GeneticAlgorithm.swift */; };
+		B957B5A01EA5C2750013A4F5 /* FileIO.swift in Sources */ = {isa = PBXBuildFile; fileRef = B97BFD051EA452A80046E642 /* FileIO.swift */; };
 		B97BFD061EA452A80046E642 /* FileIO.swift in Sources */ = {isa = PBXBuildFile; fileRef = B97BFD051EA452A80046E642 /* FileIO.swift */; };
 		B97BFD081EA492050046E642 /* Parameter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B97BFD071EA492050046E642 /* Parameter.swift */; };
 		B97BFD0A1EA495480046E642 /* Sudoku.swift in Sources */ = {isa = PBXBuildFile; fileRef = B97BFD091EA495480046E642 /* Sudoku.swift */; };
@@ -246,6 +247,7 @@
 				B902F6F51E98CE2300B91457 /* Fitness.swift in Sources */,
 				B902F6F81E98CE2300B91457 /* Organism.swift in Sources */,
 				B9C498C21E9B785E00144E12 /* BoardTest.swift in Sources */,
+				B957B5A01EA5C2750013A4F5 /* FileIO.swift in Sources */,
 				B902F6F31E98CDF900B91457 /* ElitismTest.swift in Sources */,
 				B9845BD81E9C82240049C6E7 /* Board.swift in Sources */,
 				B902F6FA1E98CE2300B91457 /* Reproduction.swift in Sources */,

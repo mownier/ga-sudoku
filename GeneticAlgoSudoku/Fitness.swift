@@ -22,17 +22,15 @@ public struct Elitism: FitnessProtocol {
         let overallNonDuplicate: Int = 81 * 3 * 3
         var nonDuplicateCount: Int = 0
         
-        board.rows.flatMap({ $0 }).enumerated().forEach({
-            computeNonDuplicateScore(board, $0, $1.data, &nonDuplicateCount)
-        })
+        let rows: [Chromosome] = board.rows.flatMap({ $0 })
+        let columns: [Chromosome] = board.columns.flatMap({ $0 })
+        let boxes: [Chromosome] = board.boxes.flatMap({ $0 })
         
-        board.columns.flatMap({ $0 }).enumerated().forEach({
-            computeNonDuplicateScore(board, $0, $1.data, &nonDuplicateCount)
-        })
-        
-        board.boxes.flatMap({ $0 }).enumerated().forEach({
-            computeNonDuplicateScore(board, $0, $1.data, &nonDuplicateCount)
-        })
+        for i in 0..<81 {
+            computeNonDuplicateScore(board, i, rows[i].data, &nonDuplicateCount)
+            computeNonDuplicateScore(board, i, columns[i].data, &nonDuplicateCount)
+            computeNonDuplicateScore(board, i, boxes[i].data, &nonDuplicateCount)
+        }
         
         let score = Int((Double(nonDuplicateCount) / Double(overallNonDuplicate)) * 100)
         return score

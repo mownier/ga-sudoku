@@ -57,10 +57,10 @@ public struct Reproduction: ReproductionProtocol {
         var candidates1 = crossoverPointCandidates1
         var candidates2 = crossoverPointCandidates2
         
-        let swapIndex1 = Int(arc4random()) % numberOfCandidates
-        let swapIndex2 = Int(arc4random()) % numberOfCandidates
-        let swapIndex3 = Int(arc4random()) % numberOfCandidates
-        let swapIndex4 = Int(arc4random()) % numberOfCandidates
+        let swapIndex1 = Int(arc4random()) % crossoverPointCandidates1.count
+        let swapIndex2 = Int(arc4random()) % crossoverPointCandidates1.count
+        let swapIndex3 = Int(arc4random()) % crossoverPointCandidates1.count
+        let swapIndex4 = Int(arc4random()) % crossoverPointCandidates1.count
         
         candidates1[swapIndex3] = crossoverPointCandidates2[swapIndex1]
         candidates1[swapIndex4] = crossoverPointCandidates2[swapIndex2]

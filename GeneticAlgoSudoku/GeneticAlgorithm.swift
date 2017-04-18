@@ -13,7 +13,9 @@ public struct GeneticAlgorithm {
     public let mutation: MutationProtocol
     public let population: PopulationProtocol
     public let reproduction: ReproductionProtocol
+    
     public var output: GeneticAlgorithmOutputProtocol?
+    public var backtrack: BacktrackProtocol?
     
     private var solutions: [Organism]
     
@@ -30,9 +32,6 @@ public struct GeneticAlgorithm {
         generateInitialSolutions()
         computeSolutionScores()
         sortSolutions()
-        
-        var bestScore: Int = 0
-        var bestScoreCount: Int = 0
         
         for i in 0..<population.numberOfGenerations {
             var candidates = reproduction.selectParentCandidates(from: solutions)
@@ -76,27 +75,28 @@ public struct GeneticAlgorithm {
             computeSolutionScores()
             sortSolutions()
             
-            if solutions[0].score > bestScore {
-                bestScore = solutions[0].score
-                bestScoreCount = 0
-                
-                if bestScore == fitness.bestScore {
-                    let bestSolutions = solutions.filter({ $0.score == fitness.bestScore })
-                    var fittest = [Organism]()
-                    for solution in bestSolutions {
-                        if !fittest.contains(solution) {
-                            fittest.append(solution)
-                        }
-                    }
-                    output?.didComplete(self, .fittestFound(i + 1, fittest))
-                    return
-                }
+            let bestScore = solutions[0].score
             
-            } else {
-                bestScoreCount += 1
+            if bestScore == fitness.bestScore {
+                let bestSolutions = solutions.filter({ $0.score == fitness.bestScore })
+                var fittest = [Organism]()
+                for solution in bestSolutions {
+                    if !fittest.contains(solution) {
+                        fittest.append(solution)
+                    }
+                }
+                output?.didComplete(self, .fittestFound(i + 1, fittest))
+                return
             }
             
             output?.didUpdatePopulation(i + 1, bestOrganisms: solutions.filter({ $0.score == bestScore }))
+            
+            if backtrack != nil, backtrack!.isEnabled(bestScore) {
+                solutions = backtrack!.reinitialize(from: solutions)
+                computeSolutionScores()
+                sortSolutions()
+                output?.didBacktrack(i + 1)
+            }
         }
         
         output?.didComplete(self, .generationFinished(solutions))
@@ -163,6 +163,13 @@ public protocol GeneticAlgorithmOutputProtocol {
     func didSelectParents(_ parent1: Organism, _ parent2: Organism)
     func didMate(_ children: [Organism])
     func didChildMutate(_ child: Organism)
+    func didBacktrack(_ generation: Int)
+}
+
+public protocol BacktrackProtocol {
+    
+    mutating func isEnabled(_ bestScore: Int) -> Bool
+    func reinitialize(from organisms: [Organism]) -> [Organism]
 }
 
 public enum GeneticAlgorithmResult {

@@ -152,4 +152,8 @@ public class TerminalOutput: GeneticAlgorithmOutputProtocol {
     public func didChildMutate(_ child: Organism) {
         print("child is mutated:", child.score)
     }
+    
+    public func didBacktrack(_ generation: Int) {
+        print("Backtrack enabled in generation \(generation)")
+    }
 }

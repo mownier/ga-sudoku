@@ -19,7 +19,7 @@ var population = Population()
 var organism = Organism()
 var mutation = RandomMutation()
 var output = TerminalOutput()
-var backtrack = Backtrack()
+var backtrack = Backtrack(fitness: fitness)
 
 let reproduction = Reproduction(fitness: fitness)
 
@@ -28,6 +28,7 @@ population.numberOfGenerations = param.generationCount
 population.numberOfOrganisms = param.organismCount
 population.initialOrganisms = param.initialOrganisms
 output.executions = param.executions
+backtrack.maxBestScoreCount = 15
 
 var algo = GeneticAlgorithm(
     organism: param.initialOrganism,

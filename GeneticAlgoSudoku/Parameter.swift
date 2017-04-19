@@ -17,14 +17,15 @@ public struct Parameter {
     public var generationCount: Int
     public var organismCount: Int
     public var executions: [CFAbsoluteTime]
-    
+    public var maxBestScoreCount: Int
     public var reader: FileReaderProtocol
     
     public init(reader: FileReaderProtocol = FileReader()) {
         self.survivalRate = 30
         self.mutationRate = 5
-        self.generationCount = 1000
-        self.organismCount = 500
+        self.generationCount = 50
+        self.organismCount = 100
+        self.maxBestScoreCount = Int(ceilf(Float(generationCount) * 0.15))
         self.initialOrganism = Organism()
         self.initialOrganisms = nil
         self.reader = reader

@@ -11,7 +11,7 @@ import XCTest
 class BacktrackTest: XCTestCase {
 
     func testIsEnabled() {
-        var backtrack = Backtrack()
+        var backtrack = Backtrack(fitness: Elitism())
         backtrack.maxBestScoreCount = 1
         
         XCTAssertFalse(backtrack.isEnabled(1))
@@ -27,8 +27,8 @@ class BacktrackTest: XCTestCase {
         XCTAssertEqual(backtrack.currentBestScore, 1)
     }
     
-    func testReinitialized() {
-        let backtrack = Backtrack()
+    func testReinitialize() {
+        let backtrack = Backtrack(fitness: Elitism())
         let (organism, indices) = TestHelper.unfitOrganism
         
         var expectedGivenIndices = [Int]()

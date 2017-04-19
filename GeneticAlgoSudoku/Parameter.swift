@@ -23,8 +23,8 @@ public struct Parameter {
     public init(reader: FileReaderProtocol = FileReader()) {
         self.survivalRate = 30
         self.mutationRate = 5
-        self.generationCount = 10
-        self.organismCount = 100
+        self.generationCount = 1000
+        self.organismCount = 500
         self.initialOrganism = Organism()
         self.initialOrganisms = nil
         self.reader = reader

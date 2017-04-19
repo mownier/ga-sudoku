@@ -28,7 +28,7 @@ population.numberOfGenerations = param.generationCount
 population.numberOfOrganisms = param.organismCount
 population.initialOrganisms = param.initialOrganisms
 output.executions = param.executions
-backtrack.maxBestScoreCount = 15
+backtrack.maxBestScoreCount = param.maxBestScoreCount
 
 var algo = GeneticAlgorithm(
     organism: param.initialOrganism,

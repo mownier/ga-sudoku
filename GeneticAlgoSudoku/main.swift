@@ -10,7 +10,7 @@ import Foundation
 
 var param = Parameter()
 if !param.process() {
-    let sudoku = Sudoku(puzzle: .three)
+    let sudoku = Sudoku(puzzle: .hard)
     param.initialOrganism.chromosomes = sudoku.chromosomes
 }
 

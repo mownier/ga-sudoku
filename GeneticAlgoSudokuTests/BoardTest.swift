@@ -63,4 +63,38 @@ class BoardTest: XCTestCase {
         let index = board.box(for: 19)
         XCTAssertEqual(index, 0)
     }
+    
+    func testTransformation() {
+        let organism = TestHelper.bestFitOrganism
+        var board = Board(chromosomes: organism.chromosomes)
+        
+        let rows: [Chromosome] = board.rows.flatMap({ $0 })
+        var columns: [Chromosome] = board.columns.flatMap({ $0 })
+        var boxes: [Chromosome] = board.boxes.flatMap({ $0 })
+    
+        let rowsOrganism = Organism(score: 0, chromosomes: rows)
+        var columnsOrganism = Organism(score: 0, chromosomes: columns)
+        var boxesOrganism = Organism(score: 0, chromosomes: boxes)
+        
+        XCTAssertEqual(organism, rowsOrganism)
+        XCTAssertEqual(organism.description, rowsOrganism.description)
+        XCTAssertNotEqual(organism, columnsOrganism)
+        XCTAssertNotEqual(organism.description, columnsOrganism.description)
+        XCTAssertNotEqual(organism, boxesOrganism)
+        XCTAssertNotEqual(organism.description, boxesOrganism.description)
+        
+        board = Board(chromosomes: columnsOrganism.chromosomes)
+        columns = board.columns.flatMap({ $0 })
+        columnsOrganism = Organism(score: 0, chromosomes: columns)
+        
+        XCTAssertEqual(organism, columnsOrganism)
+        XCTAssertEqual(organism.description, columnsOrganism.description)
+        
+        board = Board(chromosomes: boxesOrganism.chromosomes)
+        boxes = board.boxes.flatMap({ $0 })
+        boxesOrganism = Organism(score: 0, chromosomes: boxes)
+        
+        XCTAssertEqual(organism, boxesOrganism)
+        XCTAssertEqual(organism.description, boxesOrganism.description)
+    }
 }
